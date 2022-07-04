@@ -11,6 +11,6 @@ Ensure minion env.conf file is current:
 Ensure minion env.conf changes are applied:
   service.running:
     - name: salt-minion
-    - reload: True
+    - restart: True
     - watch:
       - file: /etc/salt/minion.d/env.conf
