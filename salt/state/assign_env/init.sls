@@ -8,9 +8,9 @@ Ensure minion env.conf file is current:
     - defaults:
       environment: {{ var.saltenv }}
 
-Ensure minion env.conf changes are applied:
-  service.running:
-    - name: salt-minion
-    - restart: True
+Restart Salt Minion:
+  cmd.run:
+    - name: 'salt-call service.restart salt-minion'
+    - bg: True
     - watch:
       - file: /etc/salt/minion.d/env.conf
