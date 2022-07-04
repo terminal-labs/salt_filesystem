@@ -1,4 +1,4 @@
-{% import_yaml 'assign_env/files/map.yaml' as var %}
+{% import_yaml 'state/assign_env/files/map.yaml' as var %}
 
 Ensure minion env.conf file is current:
   file.managed:
