@@ -1,4 +1,4 @@
-{% import_yaml 'state/assign_env/files/map.yaml' as var %}
+#{% import_yaml 'state/assign_env/files/map.yaml' as var %}
 
 Ensure minion env.conf file is current:
   file.managed:
@@ -6,7 +6,7 @@ Ensure minion env.conf file is current:
     - source: salt://state/assign_env/files/env.conf
     - template: jinja
     - defaults:
-      environment: {{ var.saltenv }}
+      environment: {{ pillar['fileserver_env'] }}
 
 Restart Salt Minion:
   cmd.run:
