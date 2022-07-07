@@ -1,9 +1,9 @@
 dev1:
     '*':
-        - state.foo
+        - state.script1
+        - state.script2
 
     'roles:database':
         - match: grain
         - state.dev1_only
-        - state.script1
-        - state.script2
+
