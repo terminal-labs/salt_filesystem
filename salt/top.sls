@@ -6,4 +6,3 @@ dev1:
     'roles:database':
         - match: grain
         - state.dev1_only
-
