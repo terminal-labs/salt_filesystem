@@ -1,7 +1,7 @@
-main:
+dev1:
     '*':
         - foo
-        
+
     'roles:database':
         - match: grain
         - dev1_only
