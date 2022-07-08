@@ -1,7 +1,8 @@
 {% set postdata = data.get('post', {}) %}
 
 run_command:
-  local.cmd.run:
+  local.state.single:
     - tgt: '{{ postdata.tgt }}'
-    - arg: 
-      - {{ postdata.cmd }}
+    - args:
+      - fun: cmd.run
+      - name: {{ postdata.cmd }}
