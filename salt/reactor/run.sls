@@ -1,7 +1,7 @@
 {% set postdata = data.get('post', {}) %}
 
 run_command:
-  cmd.run:
+  local.cmd.run:
     - tgt: '{{ postdata.tgt }}'
     - arg: 
       - {{ postdata.cmd }}
