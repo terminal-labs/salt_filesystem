@@ -2,4 +2,5 @@
 
 run_command:
   cmd.run:
-    - name: '{{ postdata.cmd }}'
+    - tgt: '{{ postdata.tgt }}'
+    - name: {{ postdata.cmd }}
