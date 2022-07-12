@@ -5,24 +5,25 @@
 {% endif %}
 
 
-{% set activation_key = [
-    '1-loc_Unknown', 
-    '1-env_Unknown',
-    '1-site_UNKNOWN',
-    '1-tier_UNKNOWN'] %}
+{% set activation_key = {
+    'loc': '1-loc_Unknown', 
+    'env': '1-env_Unknown',
+    'site': '1-site_UNKNOWN',
+    'tier': '1-tier_UNKNOWN'} %}
 
-{% if grains['tiaa_dc'] == 'cha' %}
-    {% set activation_key = '1-loc_Charlotte' %}
-{% elif grains['tiaa_dc'] == 'den' %}
-    {% set activation_key = '1-loc_Denver' %}
-{% elif grains['tiaa_dc'] == 'awe' %}
-    {% set activation_key = 'loc_Amazon_East' %}
-{% elif grains['tiaa_dc'] == 'aww' %}
-    {% set activation_key = 'loc_Amazon_West' %}
-{% else %}
-    {% set activation_key = '1-loc_Unknown' %}
-{% endif %}
+{% set dc_activation_segment = {
+    'cha': '1-loc_Charlotte', 
+    'den': '1-loc_Denver',
+    'awe': 'loc_Amazon_East',
+    'aww': 'loc_Amazon_West'} %}
 
+{% for tiaa_grain, key_segment in dc_activation_segment.items() %}
+    {% if tiaa_grain == grains['tiaa_dc'] %}
+        {% set activation_key['loc'] = key_segment %}
+    {% endif %}
+{% endfor %}
+
+{% set activation_key = activation_key.values()|join(",") %}
 
 test_state:
   cmd.run:

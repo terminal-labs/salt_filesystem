@@ -17,14 +17,14 @@ def env_grains():
     }
     return tiaa_grains
 
-# {% for tiaa_grain, key_segment in [
-#     ['cha', '1-loc_Charlotte'],
-#     ['den', '1-loc_Denver'],
-#     ['awe', 'loc_Amazon_East'],
-#     ['aww', 'loc_Amazon_West']] %}
-
-# {% if tiaa_grain == grains['tiaa_dc'] %}
-# {% set activation_key = 'test' %}
-
+# {% if grains['tiaa_dc'] == 'cha' %}
+#     {% set activation_key = '1-loc_Charlotte' %}
+# {% elif grains['tiaa_dc'] == 'den' %}
+#     {% set activation_key = '1-loc_Denver' %}
+# {% elif grains['tiaa_dc'] == 'awe' %}
+#     {% set activation_key = 'loc_Amazon_East' %}
+# {% elif grains['tiaa_dc'] == 'aww' %}
+#     {% set activation_key = 'loc_Amazon_West' %}
+# {% else %}
+#     {% set activation_key = '1-loc_Unknown' %}
 # {% endif %}
-# {% endfor %}
