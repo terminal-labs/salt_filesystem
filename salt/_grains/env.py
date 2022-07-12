@@ -3,9 +3,11 @@
 # type: ignore
 # flake8: noqa
 
+import socket
 
-def env_grains(minion_id=__grains__['id']):
+
+def env_grains():
     # initialize a grains dictionary
-    # minion_id = __grains__['id']
-    test_grain = {"id2": minion_id}
+    fqdn = socket.getfqdn()
+    test_grain = {"foofighter": fqdn}
     return test_grain
