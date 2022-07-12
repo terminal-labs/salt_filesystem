@@ -12,15 +12,15 @@
     '1-tier_UNKNOWN'] %}
 
 {% if grains['tiaa_dc'] == 'cha' %}
-    {% set activation_key = (activation_key + '1-loc_Charlotte') %}
+    {% set activation_key = '1-loc_Charlotte' %}
 {% elif grains['tiaa_dc'] == 'den' %}
-    {% set activation_key = (activation_key + '1-loc_Denver') %}
+    {% set activation_key = '1-loc_Denver' %}
 {% elif grains['tiaa_dc'] == 'awe' %}
-    {% set activation_key = (activation_key + 'loc_Amazon_East') %}
+    {% set activation_key = 'loc_Amazon_East' %}
 {% elif grains['tiaa_dc'] == 'aww' %}
-    {% set activation_key = (activation_key + 'loc_Amazon_West') %}
+    {% set activation_key = 'loc_Amazon_West' %}
 {% else %}
-    {% set activation_key = (activation_key + '1-loc_Unknown') %}
+    {% set activation_key = '1-loc_Unknown' %}
 {% endif %}
 
 
