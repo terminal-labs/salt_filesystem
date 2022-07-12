@@ -22,7 +22,7 @@
 {% else %}
     {% set activation_key == (activation_key + '1-loc_Unknown') %} #}
 
-{% for tiaa_grain, key_segment in [
+{% for (tiaa_grain, key_segment) in [
     ('cha', '1-loc_Charlotte'),
     ('den', '1-loc_Denver'),
     ('awe', 'loc_Amazon_East'),
