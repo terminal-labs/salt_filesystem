@@ -5,10 +5,10 @@
 {% endif %}
 
 
-{% set loc_key_segment = '1-loc_Unknown' %}
-{% set env_key_segment = '1-env_Unknown' %}
-{% set site_key_segment = '1-site_UNKNOWN' %}
-{% set tier_key_segment = '1-tier_UNKNOWN' %}
+{% set loc_key_segment = namespace(value='1-loc_Unknown') %}
+{% set env_key_segment = namespace(value='1-env_Unknown') %}
+{% set site_key_segment = namespace(value='1-site_UNKNOWN') %}
+{% set tier_key_segment = namespace(value='1-tier_UNKNOWN') %}
 
 
 {% set dc_activation_segment = {
@@ -19,16 +19,15 @@
 
 {% for tiaa_grain, key_segment in dc_activation_segment.items() %}
     {% if tiaa_grain == grains['tiaa_dc'] %}
-        {% set cache = key_segment %}
+        {% set loc_key_segment.value = key_segment %}
     {% endif %}
 {% endfor %}
-{% set loc_key_segment = cache %}
 
 {% set activation_key = [
-    loc_key_segment,
-    env_key_segment,
-    site_key_segment,
-    tier_key_segment
+    loc_key_segment.value,
+    env_key_segment.value,
+    site_key_segment.value,
+    tier_key_segment.value
     ]|join(",") %}
     
 test_state:
