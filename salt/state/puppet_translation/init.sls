@@ -1,7 +1,7 @@
 {% if grains['domain'] == 'qic.tiaa-cref.org' %}
-    {% set sat_server = "hiera('rhelfinish::register_satellite6::lab_satellite_server')" %}
+    {% set sat_server = 'rhelfinish::register_satellite6::lab_satellite_server' %}
 {% else %}
-    {% set sat_server = "hiera('rhelfinish::register_satellite6::satellite_server')" %}
+    {% set sat_server = 'rhelfinish::register_satellite6::satellite_server' %}
 {% endif %}
 
 test_state:
