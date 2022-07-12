@@ -16,7 +16,7 @@ def env_grains():
     #     "tiaa_tier": fqdn[6]
     # }
     tiaa_grains = {
-        "foo1": fqdn,
-        "foo2": fqdn
+        "foo1": fqdn[:2],
+        "foo2": fqdn[3:4]
     }
     return tiaa_grains
