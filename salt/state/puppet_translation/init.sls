@@ -22,11 +22,11 @@
 {% else %}
     {% set activation_key == (activation_key + '1-loc_Unknown') %} #}
 
-{% for (tiaa_grain, key_segment) in [
-    ('cha', '1-loc_Charlotte'),
-    ('den', '1-loc_Denver'),
-    ('awe', 'loc_Amazon_East'),
-    ('aww', 'loc_Amazon_West')] %}
+{% for tiaa_grain, key_segment in [
+    ['cha', '1-loc_Charlotte'],
+    ['den', '1-loc_Denver'],
+    ['awe', 'loc_Amazon_East'],
+    ['aww', 'loc_Amazon_West']] %}
 
 {# {% if tiaa_grain == grains['tiaa_dc'] %} #}
 {% set activation_key = (tiaa_grain + key_segment) %}
