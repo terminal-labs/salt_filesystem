@@ -5,24 +5,24 @@
 {% endif %}
 
 
-{# {% set activation_key = [
+{% set activation_key = [
     '1-loc_Unknown', 
     '1-env_Unknown',
     '1-site_UNKNOWN',
-    '1-tier_UNKNOWN'] %} #}
+    '1-tier_UNKNOWN'] %}
 
-{# {% if grains['tiaa_dc'] == 'cha' %}
+{% if grains['tiaa_dc'] == 'cha' %}
     {% set activation_key == (activation_key + '1-loc_Charlotte') %}
 {% elif grains['tiaa_dc'] == 'den' %}
     {% set activation_key == (activation_key + '1-loc_Denver') %}
-{% elif grains['tiaa_dc'] == 'den' %}
+{% elif grains['tiaa_dc'] == 'awe' %}
     {% set activation_key == (activation_key + 'loc_Amazon_East') %}
-{% elif grains['tiaa_dc'] == 'den' %}
+{% elif grains['tiaa_dc'] == 'aww' %}
     {% set activation_key == (activation_key + 'loc_Amazon_West') %}
 {% else %}
-    {% set activation_key == (activation_key + '1-loc_Unknown') %} #}
+    {% set activation_key == (activation_key + '1-loc_Unknown') %}
 
-{% for tiaa_grain, key_segment in [
+{# {% for tiaa_grain, key_segment in [
     ['cha', '1-loc_Charlotte'],
     ['den', '1-loc_Denver'],
     ['awe', 'loc_Amazon_East'],
@@ -32,9 +32,9 @@
 {% set activation_key = 'test' %}
 
 {# {% endif %} #}
-{% endfor %}
+{% endfor %} #}
 
 test_state:
   cmd.run:
-    - name: echo {{sat_server}} > /root/sat_server.txt
+    - name: echo {{activation_key}} > /root/activation_key.txt
 
