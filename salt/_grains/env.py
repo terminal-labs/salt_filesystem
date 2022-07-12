@@ -3,7 +3,7 @@
 # type: ignore
 # flake8: noqa
 
-minion_id = {{grains['id']}}
+minion_id = __grains__['id']
 
 
 def env_grains():
