@@ -19,6 +19,7 @@
 
 {% for tiaa_grain, key_segment in dc_activation_segment.items() %}
     {% if tiaa_grain == grains['tiaa_dc'] %}
+    {{tiaa_grain}}: {{key_segment}}
         {% set loc_key_segment = key_segment %}
     {% endif %}
 {% endfor %}
