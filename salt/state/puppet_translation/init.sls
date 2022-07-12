@@ -5,7 +5,7 @@
 {% endif %}
 
 
-{% set loc_key_segment = '1-loc_Unknown' %}
+{% set loc_key_segment = namespace(value='1-loc_Unknown') %}
 {% set env_key_segment = '1-env_Unknown' %}
 {% set site_key_segment = '1-site_UNKNOWN' %}
 {% set tier_key_segment = '1-tier_UNKNOWN' %}
@@ -22,7 +22,7 @@
 test_{{tiaa_grain}} {{key_segment}}:
   cmd.run:
     - name: echo  '{{tiaa_grain}} {{key_segment}}'
-        {% set loc_key_segment = key_segment %}
+        {% set loc_key_segment.value = key_segment %}
     {% endif %}
 {% endfor %}
 
