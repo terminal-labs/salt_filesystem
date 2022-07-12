@@ -23,17 +23,6 @@
     {% set activation_key = (activation_key + '1-loc_Unknown') %}
 {% endif %}
 
-{# {% for tiaa_grain, key_segment in [
-    ['cha', '1-loc_Charlotte'],
-    ['den', '1-loc_Denver'],
-    ['awe', 'loc_Amazon_East'],
-    ['aww', 'loc_Amazon_West']] %}
-
-{# {% if tiaa_grain == grains['tiaa_dc'] %} #}
-{% set activation_key = 'test' %}
-
-{# {% endif %} #}
-{% endfor %} #}
 
 test_state:
   cmd.run:
