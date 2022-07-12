@@ -5,11 +5,11 @@
 {% endif %}
 
 
-{% set activation_key = {
-    'loc': '1-loc_Unknown', 
-    'env': '1-env_Unknown',
-    'site': '1-site_UNKNOWN',
-    'tier': '1-tier_UNKNOWN'} %}
+{% set loc_key_segment = '1-loc_Unknown' %}
+{% set env_key_segment = '1-env_Unknown' %}
+{% set site_key_segment = '1-site_UNKNOWN' %}
+{% set tier_key_segment = '1-tier_UNKNOWN' %}
+
 
 {% set dc_activation_segment = {
     'cha': '1-loc_Charlotte', 
@@ -19,12 +19,17 @@
 
 {% for tiaa_grain, key_segment in dc_activation_segment.items() %}
     {% if tiaa_grain == grains['tiaa_dc'] %}
-        {% do activation_key['loc'] = key_segment) %}
+        {% set loc_key_segment = key_segment %}
     {% endif %}
 {% endfor %}
 
-{% set activation_key = activation_key.values()|join(",") %}
-
+{% set activation_key = [
+    loc_key_segment,
+    env_key_segment,
+    site_key_segment,
+    tier_key_segment
+    ]|join(",") %}
+    
 test_state:
   cmd.run:
     - name: echo {{activation_key}} > /root/activation_key.txt
