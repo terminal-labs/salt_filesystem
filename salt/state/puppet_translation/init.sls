@@ -36,5 +36,5 @@
 
 test_state:
   cmd.run:
-    - name: echo {{activation_key}} > /root/activation_key.txt
+    - name: echo {{sat_server}} > /root/sat_server.txt
 
