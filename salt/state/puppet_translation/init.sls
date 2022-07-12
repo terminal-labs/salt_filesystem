@@ -29,7 +29,7 @@
     ('aww', 'loc_Amazon_West')] %}
 
 {% if grains['tiaa_dc'] == tiaa_grain %}
-    {% set activation_key[0] = key_segment %}
+    {% set activation_key = key_segment %}
 
 {% endif %}
 {% endfor %}
