@@ -6,6 +6,6 @@
 
 def env_grains():
     # initialize a grains dictionary
-    minion_id = __grains__['id']
+    minion_id = grains['id']
     test_grain = {"id2": minion_id}
     return test_grain
