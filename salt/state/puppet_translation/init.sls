@@ -5,11 +5,11 @@
 {% endif %}
 
 
-{% set activation_key = [
+{# {% set activation_key = [
     '1-loc_Unknown', 
     '1-env_Unknown',
     '1-site_UNKNOWN',
-    '1-tier_UNKNOWN'] %}
+    '1-tier_UNKNOWN'] %} #}
 
 {# {% if grains['tiaa_dc'] == 'cha' %}
     {% set activation_key == (activation_key + '1-loc_Charlotte') %}
