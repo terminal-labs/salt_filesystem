@@ -5,7 +5,7 @@
 {% endif %}
 
 
-{% set loc_key_segment = namespace(value='1-loc_Unknown') %}
+{% set loc_key_segment = '1-loc_Unknown' %}
 {% set env_key_segment = '1-env_Unknown' %}
 {% set site_key_segment = '1-site_UNKNOWN' %}
 {% set tier_key_segment = '1-tier_UNKNOWN' %}
@@ -19,12 +19,10 @@
 
 {% for tiaa_grain, key_segment in dc_activation_segment.items() %}
     {% if tiaa_grain == grains['tiaa_dc'] %}
-test_{{tiaa_grain}} {{key_segment}}:
-  cmd.run:
-    - name: echo  '{{tiaa_grain}} {{key_segment}}'
-        {% set loc_key_segment.value = key_segment %}
+        {% set cache = key_segment %}
     {% endif %}
 {% endfor %}
+{% set loc_key_segment = cache %}
 
 {% set activation_key = [
     loc_key_segment,
