@@ -11,10 +11,10 @@ def tiaa_grains():
     """
     Return a dictionary of TIAA prefixed grains.
     """
-    tiaa_dc = grains["tiaa_dc"],
-    tiaa_env = grains["tiaa_env"],
-    tiaa_site = grains["tiaa_site"],
-    tiaa_tier = grains["tiaa_tier"]
+    tiaa_dc = __grains__["tiaa_dc"],
+    tiaa_env = __grains__["tiaa_env"],
+    tiaa_site = __grains__["tiaa_site"],
+    tiaa_tier = __grains__["tiaa_tier"]
     return dict(tiaa_dc=tiaa_dc, tiaa_env=tiaa_env, tiaa_site=tiaa_site, tiaa_tier=tiaa_tier)
 
 
