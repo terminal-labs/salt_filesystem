@@ -16,9 +16,13 @@
     ]|join(" ") %}
 
 
-Ensure puppet_translation2/v1 directorys are present:
+Ensure /root/puppet_translation2 directory is present:
   file.directory:
-    - name: /root/puppet_translation2/v2
+    - name: /root/puppet_translation2
     - user: root
     - group: root
     - dir_mode: 755
+
+Ensure /root/puppet_translation2/v1 directory is present:
+  file.directory:
+    - name: /root/puppet_translation2/v1
