@@ -1,0 +1,33 @@
+# -*- coding: utf-8 -*-
+"""
+Manage TIAA Activation Keys with Salt
+===============================================
+"""
+
+__virtualname__ = "tiaa_key"
+
+
+def get_tiaa_grains():
+    """
+    Return a dictionary of TIAA prefixed grains.
+    """
+    grains = {
+        "tiaa_dc": _grains_["tiaa_dc"],
+        "tiaa_env": _grains_["tiaa_env"],
+        "tiaa_site": _grains_["tiaa_site"],
+        "tiaa_tier": _grains_["tiaa_tier"]
+    }
+    return grains
+
+
+# def convert_hosted_zone_domain_name_to_id(keyid, key, domain_name):
+#     """
+#     Returns a hosted zone ID for a hosted zone domain name if exists, else
+#     returns None.
+#     """
+#     client = establish_client(keyid, key)
+#     hosted_zones = client.list_hosted_zones_by_name(DNSName=domain_name)
+#     for hosted_zone in hosted_zones['HostedZones']:
+#         if hosted_zone['Name'] == f'{domain_name}.':
+#             return hosted_zone['Id'].split('/')[-1]
+#     return None
