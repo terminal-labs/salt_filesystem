@@ -11,13 +11,14 @@ def get_tiaa_grains():
     """
     Return a dictionary of TIAA prefixed grains.
     """
-    tiaa_grains = {
-        "tiaa_dc": grains["tiaa_dc"],
-        "tiaa_env": grains["tiaa_env"],
-        "tiaa_site": grains["tiaa_site"],
-        "tiaa_tier": grains["tiaa_tier"]
-    }
-    return tiaa_grains
+    # tiaa_grains = {
+    #     "tiaa_dc": grains["tiaa_dc"],
+    #     "tiaa_env": grains["tiaa_env"],
+    #     "tiaa_site": grains["tiaa_site"],
+    #     "tiaa_tier": grains["tiaa_tier"]
+    # }
+    fqdn = __grains__['fqdn']
+    return fqdn
 
 
 # def convert_hosted_zone_domain_name_to_id(keyid, key, domain_name):
