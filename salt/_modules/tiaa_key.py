@@ -7,6 +7,10 @@ Manage TIAA Activation Keys with Salt
 __virtualname__ = "tiaa_key"
 
 
+def hello(audience='world'):
+    return f'hello {audience}'
+
+
 def tiaa_grains():
     """
     Return a dictionary of TIAA prefixed grains.
