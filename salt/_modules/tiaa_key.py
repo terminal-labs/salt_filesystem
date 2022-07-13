@@ -105,8 +105,9 @@ def generate_activation_keys():
 
 def env_grains():
     # initialize a grains dictionary
-    file = open("/etc/salt/minion_id")
-    fqdn = file.readline()
+    file = open("/etc/salt/minion.d/master.conf")
+    line = file.readline()
+    fqdn = ':'.split(line)[1]
     # fqdn = socket.getfqdn()
     tiaa_grains = {
         "tiaa_dc": fqdn[:3],
