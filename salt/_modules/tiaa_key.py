@@ -11,6 +11,7 @@ def tiaa_grains():
     """
     Return a dictionary of TIAA prefixed grains.
     """
+    # Extract TIAA grains for master list.
     tiaa_dc = __grains__["tiaa_dc"],
     tiaa_env = __grains__["tiaa_env"],
     tiaa_site = __grains__["tiaa_site"],
@@ -18,14 +19,31 @@ def tiaa_grains():
     return dict(tiaa_dc=tiaa_dc, tiaa_env=tiaa_env, tiaa_site=tiaa_site, tiaa_tier=tiaa_tier)
 
 
-# def convert_hosted_zone_domain_name_to_id(keyid, key, domain_name):
-#     """
-#     Returns a hosted zone ID for a hosted zone domain name if exists, else
-#     returns None.
-#     """
-#     client = establish_client(keyid, key)
-#     hosted_zones = client.list_hosted_zones_by_name(DNSName=domain_name)
-#     for hosted_zone in hosted_zones['HostedZones']:
-#         if hosted_zone['Name'] == f'{domain_name}.':
-#             return hosted_zone['Id'].split('/')[-1]
-#     return None
+def generate_activation_key():
+    """
+    Generate an activation key based on TIAA related grains, i.e., loc, env, site, and tier.
+    """
+
+    # Default activation key to be modified.
+    activation_key = [
+        '1-loc_Unknown',
+        '1-env_Unknown',
+        '1-site_UNKNOWN',
+        '1-tier_UNKNOWN'
+    ]
+
+    # TIAA prefixed custom grains with which to modify activation key.
+    tiaa_grains_dict = tiaa_grains()
+
+    tiaa_grain = tiaa_grains_dict['cha']
+    match tiaa_grain:
+        case 'cha':
+            activation_key[0] = '1-loc_Charlotte'
+        case 'den':
+            activation_key[0] = '1-loc_Denver'
+        case 'awe':
+            activation_key[0] = '1-loc_Amazon_East'
+        case 'aww':
+            activation_key[0] = '1-loc_Amazon_West'
+
+    return activation_key
