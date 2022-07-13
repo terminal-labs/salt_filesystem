@@ -41,6 +41,20 @@
     {% endif %}
 {% endfor %}
 
+# Map tiaa_site to activation key segment
+{% set dc_activation_segment = {
+    '1-site_A': 'a', 
+    '1-site_B': 'b', 
+    '1-site_C': 'c',
+    '1-site_D': 'd', 
+    '1-site_E': 'e'}  %}
+# Update default activation key segment with tiaa_env segment
+{% for key_segment, tiaa_grain in dc_activation_segment.items() %}
+    {% if grains['tiaa_site'] in tiaa_grain %}
+        {% set site_key_segment.value = key_segment %}
+    {% endif %}
+{% endfor %}
+
 
 {% set activation_key = [
     loc_key_segment.value,
