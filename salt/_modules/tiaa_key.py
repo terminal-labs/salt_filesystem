@@ -51,6 +51,6 @@ def generate_activation_key():
     # Update default activation key with tiaa_loc
     for activation_key, tiaa_grain in activation_key_map.items():
         if tiaa_grains_dict['tiaa_dc'] in tiaa_grain:
-            activation_keys[0] = activation_key
+            activation_keys[0] = 'test'
 
     return activation_keys
