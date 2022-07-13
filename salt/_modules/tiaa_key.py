@@ -31,8 +31,8 @@ def generate_activation_key():
     site, and tier.
     """
 
-    # Default activation key to be modified.
-    activation_keys = [
+    # Default activation keys to be modified.
+    loc_key, env_key, site_key, tier_key = [
         '1-loc_Unknown',
         '1-env_Unknown',
         '1-site_UNKNOWN',
@@ -51,6 +51,6 @@ def generate_activation_key():
     # Update default activation key with tiaa_loc
     for activation_key, tiaa_grain in activation_key_map.items():
         if tiaa_grains_dict['tiaa_dc'] in tiaa_grain:
-            activation_keys[0] = 'test'
+            loc_key = activation_key
 
-    return activation_keys
+    return ' '.join(loc_key, env_key, site_key, tier_key)
