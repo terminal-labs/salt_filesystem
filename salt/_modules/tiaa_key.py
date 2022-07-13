@@ -99,4 +99,5 @@ def generate_activation_keys():
         if __grains__["tiaa_tier"] in tiaa_grain:
             activation_keys[3] = activation_key
 
+    # Return string of keys separated by spaces
     return ' '.join(activation_keys)
