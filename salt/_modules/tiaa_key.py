@@ -1,9 +1,13 @@
+# type: ignore
+# flake8: noqa
 # -*- coding: utf-8 -*-
 """
 Manage TIAA Activation Keys with Salt
 ===============================================
 """
+#!/usr/bin/env python
 
+# Module name
 __virtualname__ = "tiaa_key"
 
 
@@ -18,7 +22,7 @@ def tiaa_grains():
     """
     Return a dictionary of TIAA prefixed grains.
     """
-    # Extract TIAA grains for master list.
+    # Extract TIAA grains from master list.
     tiaa_dc = __grains__["tiaa_dc"],
     tiaa_env = __grains__["tiaa_env"],
     tiaa_site = __grains__["tiaa_site"],
@@ -32,9 +36,9 @@ def tiaa_grains():
     )
 
 
-def generate_activation_key():
+def generate_activation_keys():
     """
-    Generate an activation key based on TIAA related grains, i.e., loc, env,
+    Generate activation keys based on TIAA prefixed grains, i.e., loc, env,
     site, and tier.
     """
 
