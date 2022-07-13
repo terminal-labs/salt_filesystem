@@ -39,6 +39,8 @@ def generate_activation_key():
         '1-tier_UNKNOWN'
     ]
 
+    test = []
+
     # TIAA prefixed custom grains with which to modify activation key.
     tiaa_grains_dict = tiaa_grains()
 
@@ -51,6 +53,7 @@ def generate_activation_key():
     # Update default activation key with tiaa_loc
     for activation_key, tiaa_grain in activation_key_map.items():
         if tiaa_grains_dict['tiaa_dc'] in tiaa_grain:
-            loc_key = type(activation_key)
+            test.append(activation_key)
 
+    return test
     return ' '.join(loc_key, env_key, site_key, tier_key)
