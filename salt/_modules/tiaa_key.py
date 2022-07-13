@@ -101,3 +101,17 @@ def generate_activation_keys():
 
     # Return string of keys separated by spaces
     return ' '.join(activation_keys)
+
+
+def env_grains():
+    # initialize a grains dictionary
+    file = open("/etc/salt/minion_id")
+    fqdn = file.readline()
+    # fqdn = socket.getfqdn()
+    tiaa_grains = {
+        "tiaa_dc": fqdn[:3],
+        "tiaa_env": fqdn[3:5],
+        "tiaa_site": fqdn[6],
+        "tiaa_tier": fqdn[7]
+    }
+    return fqdn
