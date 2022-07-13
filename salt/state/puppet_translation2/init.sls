@@ -18,7 +18,7 @@
 
 Ensure puppet_translation2/v1 directorys are present:
   file.directory:
-    - name: /root/puppet_translation2
+    - name: /root/puppet_translation2/v2
     - user: root
     - group: root
     - dir_mode: 755
