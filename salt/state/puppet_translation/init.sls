@@ -75,7 +75,18 @@
     tier_key_segment.value
     ]|join(" ") %}
     
+{% set register_cmd = [
+    '/usr/sbin/subscription-manager',
+    'register',
+    '--org=TIAA',
+    activation_key
+    ]|join(" ") %}
+
 test_state:
   cmd.run:
     - name: echo {{activation_key}} > /root/activation_key.txt
+
+test_state:
+  cmd.run:
+    - name: echo {{register_cmd}} > /root/register_cmd.txt
 
