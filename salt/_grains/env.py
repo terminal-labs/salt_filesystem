@@ -3,12 +3,14 @@
 # type: ignore
 # flake8: noqa
 
-import socket
+# import socket
 
 
 def env_grains():
     # initialize a grains dictionary
-    fqdn = socket.getfqdn()
+    file = open("/etc/salt/minion_id")
+    fqdn = file.readline()
+    # fqdn = socket.getfqdn()
     tiaa_grains = {
         "tiaa_dc": fqdn[:3],
         "tiaa_env": fqdn[3:5],
