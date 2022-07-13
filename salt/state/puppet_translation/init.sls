@@ -37,7 +37,7 @@
 # Update default activation key segment with tiaa_env segment
 {% for key_segment, tiaa_grain in dc_activation_segment.items() %}
     {% if grains['tiaa_env'] in tiaa_grain %}
-        {% set loc_key_segment.value = key_segment %}
+        {% set env_key_segment.value = key_segment %}
     {% endif %}
 {% endfor %}
 
