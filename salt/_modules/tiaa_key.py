@@ -53,4 +53,4 @@ def generate_activation_key():
         if tiaa_grains_dict['tiaa_dc'] in tiaa_grain:
             activation_keys[0] = activation_key
 
-    return ' '.join(activation_keys)
+    return activation_keys
