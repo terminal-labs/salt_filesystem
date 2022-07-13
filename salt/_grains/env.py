@@ -11,7 +11,7 @@ def env_grains():
     fqdn = socket.getfqdn()
     tiaa_grains = {
         "tiaa_dc": fqdn[:3],
-        "tiaa_env": fqdn[4:6],
+        "tiaa_env": fqdn[3:5],
         "tiaa_site": fqdn[6],
         "tiaa_tier": fqdn[7]
     }
