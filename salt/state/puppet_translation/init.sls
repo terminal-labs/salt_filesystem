@@ -73,7 +73,7 @@
     env_key_segment.value,
     site_key_segment.value,
     tier_key_segment.value
-    ]|join(",") %}
+    ]|join(" ") %}
     
 test_state:
   cmd.run:
