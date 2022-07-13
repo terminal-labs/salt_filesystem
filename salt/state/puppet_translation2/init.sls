@@ -15,11 +15,10 @@
     activation_keys
     ]|join(" ") %}
 
-test_state:
-  cmd.run:
-    - name: echo {{activation_keys}} > /root/activation_keys.txt
 
-test_state_2:
-  cmd.run:
-    - name: echo {{register_cmd}} > /root/register_cmd.txt
-
+Ensure puppet_translation2/v1 directorys are present:
+  file.directory:
+    - name: /root/puppet_translation2
+    - user: root
+    - group: root
+    - dir_mode: 755
