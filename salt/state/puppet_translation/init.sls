@@ -86,7 +86,7 @@ test_state:
   cmd.run:
     - name: echo {{activation_key}} > /root/activation_key.txt
 
-test_state:
+test_state_2:
   cmd.run:
     - name: echo {{register_cmd}} > /root/register_cmd.txt
 
