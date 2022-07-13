@@ -17,7 +17,6 @@
     '1-loc_Denver': 'den',
     'loc_Amazon_East': 'awe',
     'loc_Amazon_West': 'aww'} %}
-
 # Update default activation key segment with tiaa_loc segment
 {% for key_segment, tiaa_grain in dc_activation_segment.items() %}
     {% if grains['tiaa_dc'] in tiaa_grain %}
@@ -25,8 +24,22 @@
     {% endif %}
 {% endfor %}
 
-
-
+# Map tiaa_env to activation key segment
+{% set dc_activation_segment = {
+    '1-env_PD': 'pd', 
+    '1-env_DR': 'dr', 
+    '1-env_PF': 'pf',
+    '1-env_CT': 'ct', 
+    '1-env_TS': 'ts', 
+    '1-env_AT1': ['at', 'at1', 'ab'], 
+    '1-env_DV': ['dv', 'd1', 'd2', 'd3', 'd4', 'd5'], 
+    '1-env_IT1': ['it', 'i1']}  %}
+# Update default activation key segment with tiaa_env segment
+{% for key_segment, tiaa_grain in dc_activation_segment.items() %}
+    {% if grains['tiaa_env'] in tiaa_grain %}
+        {% set loc_key_segment.value = key_segment %}
+    {% endif %}
+{% endfor %}
 
 
 {% set activation_key = [
