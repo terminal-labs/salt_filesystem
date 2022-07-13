@@ -52,7 +52,7 @@ def generate_activation_key():
         'loc_Amazon_West': 'aww'}
     # Update default activation key with tiaa_loc
     for activation_key, tiaa_grain in activation_key_map.items():
-        if tiaa_grains_dict['tiaa_dc'] in tiaa_grain:
+        if str(tiaa_grains_dict['tiaa_dc']) in tiaa_grain:
             test.append(str(activation_key))
 
     return test
