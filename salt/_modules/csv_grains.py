@@ -11,5 +11,5 @@ Manage TIAA Activation Keys with Salt
 __virtualname__ = "csv_grains"
 
 
-def get_saltenv():
+def _get_saltenv():
     return __salt__["config.get"]("saltenv")
