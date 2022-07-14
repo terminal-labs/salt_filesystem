@@ -16,8 +16,8 @@ def _get_saltenv():
 
 
 def get_diff(
-        today_filepath="salt://state/csv_grains_updater/files/today.csv",
-        yesterday_filepath="salt://state/csv_grains_updater/files/yesterday.csv"):
+        yesterday_filepath="salt://state/csv_grains_updater/files/yesterday.csv",
+        today_filepath="salt://state/csv_grains_updater/files/today.csv"):
 
     saltenv = _get_saltenv()
     diff = __salt__["file.get_diff"](
