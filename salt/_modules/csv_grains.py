@@ -25,4 +25,4 @@ def get_differences(
         yesterday_filepath,
         saltenv=saltenv)
 
-    return type(differences)
+    return differences
