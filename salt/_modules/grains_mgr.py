@@ -16,7 +16,7 @@ def patching_enabled():
         'grains.get']("tiaa_patching_enabled")
     if tiaa_patching_enabled_grain is ("" or False):
         __salt__['grains.setval'](
-            "tiaa_patching_enabled", True, destructive=False)
+            "tiaa_patching_enabled", True, destructive=True)
         tiaa_patching_enabled_grain = __salt__[
             'grains.get']("tiaa_patching_enabled")
     return tiaa_patching_enabled_grain
@@ -27,7 +27,7 @@ def patching_disabled():
         'grains.get']("tiaa_patching_enabled")
     if tiaa_patching_enabled_grain is ("" or True):
         __salt__['grains.setval'](
-            "tiaa_patching_enabled", False, destructive=False)
+            "tiaa_patching_enabled", False, destructive=True)
         tiaa_patching_enabled_grain = __salt__[
             'grains.get']("tiaa_patching_enabled")
     return tiaa_patching_enabled_grain
