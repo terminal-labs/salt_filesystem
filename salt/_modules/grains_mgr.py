@@ -18,5 +18,5 @@ def test():
 
 def patching_enabled():
     tiaa_patching_grain = __salt__['grains.get']("tiaa_patching")
-    if tiaa_patching_grain is None:
+    if tiaa_patching_grain is "":
         return "There is no spoon."
