@@ -12,5 +12,5 @@ __virtualname__ = "grains_mgr"
 
 
 def test():
-    print(salt['tiaa_key.generate_activation_keys']())
-    return salt['tiaa_key.generate_activation_keys']()
+    print(__salt__['tiaa_key.generate_activation_keys']())
+    return __salt__['tiaa_key.generate_activation_keys']()
