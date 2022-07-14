@@ -8,7 +8,7 @@ Manage TIAA Activation Keys with Salt
 #!/usr/bin/env python
 
 # Module name
-__virtualname__ = "grains_mgr"
+__virtualname__ = "csv_grains"
 
 
 def get_saltenv():
