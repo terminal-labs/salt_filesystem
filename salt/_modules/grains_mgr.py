@@ -17,4 +17,4 @@ def test():
 
 
 def patching_enabled():
-    return __salt__['grains.get']("tiaa_env")
+    return __salt__['grains.get']("tiaa_patching")
