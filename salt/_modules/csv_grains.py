@@ -26,6 +26,7 @@ def get_diff(
         saltenv=saltenv).split("\n")
 
     diff = [line for line in diff if line[:2] not in ("--", "++", "@@")]
+    return diff
     subtractions = [line for line in diff if line[0] == '-']
     additions = [line for line in diff if line[0] == '+']
     return dict(subtractions=subtractions, additions=additions)
