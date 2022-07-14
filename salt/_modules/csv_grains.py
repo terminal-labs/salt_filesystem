@@ -29,3 +29,12 @@ def get_diff(
     subtractions = [line for line in diff if line[0] == '-']
     additions = [line for line in diff if line[0] == '+']
     return dict(subtractions=subtractions, additions=additions)
+
+
+def delete_grains(
+        yesterday_filepath="salt://state/csv_grains_updater/files/yesterday.csv",
+        today_filepath="salt://state/csv_grains_updater/files/today.csv"):
+
+    subtractions = [tuple(line.split(','))
+                    for line in get_diff()['subtractions']]
+    return subtractions
