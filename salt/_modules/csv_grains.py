@@ -21,8 +21,8 @@ def get_diff(
 
     saltenv = _get_saltenv()
     diff = __salt__["file.get_diff"](
-        today_filepath,
         yesterday_filepath,
+        today_filepath,
         saltenv=saltenv).split("\n")
 
     # diff = [line for line in diff if line[:2] not in ("--", "++", "@@")]
