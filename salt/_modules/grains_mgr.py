@@ -11,11 +11,6 @@ Manage TIAA Activation Keys with Salt
 __virtualname__ = "grains_mgr"
 
 
-def test():
-    print(__salt__['tiaa_key.generate_activation_keys']())
-    return __salt__['tiaa_key.generate_activation_keys']()
-
-
 def patching_enabled():
     tiaa_patching_grain = __salt__['grains.get']("tiaa_patching")
     if tiaa_patching_grain is ("" or False):
@@ -30,3 +25,11 @@ def patching_disabled():
         __salt__['grains.setval']("tiaa_patching", False)
         tiaa_patching_grain = __salt__['grains.get']("tiaa_patching")
     return tiaa_patching_grain
+
+
+def remove_grain(grain_key="tiaa_patching"):
+    if __salt__['grains.get']("tiaa_patching") is "":
+        return f"No {grain_key} grain is present."
+    else:
+        __salt__['grains.delkey'](grain_key)
+        return f"Grain {grain_key} was deleted."
