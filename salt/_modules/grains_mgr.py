@@ -17,12 +17,4 @@ def test():
 
 
 def patching_enabled():
-    try:
-        patching_grain = __grains__['tiaa_patchapp']
-    except KeyError:
-        patching_grain = None
-
-    if patching_grain is None:
-        return "No grain set"
-    else:
-        return patching_grain
+    return __salt__['grains.get']("tiaa_env")
