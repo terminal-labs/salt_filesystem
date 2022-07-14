@@ -17,7 +17,11 @@ def test():
 
 
 def patching_enabled():
-    patching_grain = __grains__['tiaa_patchapp']
+    try:
+        patching_grain = __grains__['tiaa_patchapp']
+    except KeyError:
+        patching_grain = None
+
     if patching_grain is None:
         return "No grain set"
     else:
