@@ -13,7 +13,7 @@ __virtualname__ = "grains_mgr"
 
 def patching_enabled():
     tiaa_patching_grain = __salt__['grains.get']("tiaa_patching")
-    if tiaa_patching_grain is ("" or False):
+    if tiaa_patching_grain is "" or tiaa_patching_grain is False:
         __salt__['grains.setval']("tiaa_patching", True)
         tiaa_patching_grain = __salt__['grains.get']("tiaa_patching")
     return tiaa_patching_grain
@@ -21,7 +21,15 @@ def patching_enabled():
 
 def patching_disabled():
     tiaa_patching_grain = __salt__['grains.get']("tiaa_patching")
-    if tiaa_patching_grain is ("" or True):
+    if tiaa_patching_grain is "" or tiaa_patching_grain is True:
         __salt__['grains.setval']("tiaa_patching", False)
         tiaa_patching_grain = __salt__['grains.get']("tiaa_patching")
     return tiaa_patching_grain
+
+
+def remove_grain(grain_key="tiaa_patching"):
+    if __salt__['grains.get']("tiaa_patching") is "":
+        return f"No {grain_key} grain is present."
+    else:
+        __salt__['grains.delkey']("tiaa_patching")
+        return f"Grain{grain_key} grain deleted."
