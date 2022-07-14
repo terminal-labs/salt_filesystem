@@ -23,6 +23,6 @@ def get_differences(
     differences = __salt__["file.get_diff"](
         today_filepath,
         yesterday_filepath,
-        saltenv=saltenv)
+        saltenv=saltenv).split("\n")
 
     return differences
