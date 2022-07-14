@@ -14,3 +14,11 @@ __virtualname__ = "grains_mgr"
 def test():
     print(__salt__['tiaa_key.generate_activation_keys']())
     return __salt__['tiaa_key.generate_activation_keys']()
+
+
+def patching_enabled():
+    patching_grain = __grains__['tiaa_patchapp']
+    if patching_grain is None:
+        return "No grain set"
+    else:
+        return patching_grain
