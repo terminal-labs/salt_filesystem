@@ -15,9 +15,9 @@ def _get_saltenv():
     return __salt__["config.get"]("saltenv")
 
 
-def get_diff(local_minion_id="local-minion",
-             yesterday_filepath="salt://state/csv_grains_updater/files/yesterday.csv",
-             today_filepath="salt://state/csv_grains_updater/files/today.csv"):
+def get_diff(
+        yesterday_filepath="salt://state/csv_grains_updater/files/yesterday.csv",
+        today_filepath="salt://state/csv_grains_updater/files/today.csv"):
 
     saltenv = _get_saltenv()
     diff = __salt__["file.get_diff"](
@@ -29,18 +29,16 @@ def get_diff(local_minion_id="local-minion",
 
     subtractions = [line for line in diff if line[0] == '-']
     additions = [line for line in diff if line[0] == '+']
-    return dict(subtractions=subtractions[local_minion_id], additions=additions[local_minion_id])
+    return dict(subtractions=subtractions, additions=additions)
 
 
 def delete_grains():
     subtractions = [line.split(',') for line in get_diff()['subtractions']]  # noqa:E501
     return subtractions
 
-# Must be run with local minion!
 
-
-def create_grains():
-    additions = [line.split(',') for line in get_diff()['additions']]  # noqa:E501
+def create_grains(local_minion_id="local-minion"):
+    additions = [line.split(',') for line in get_diff()[local_minion_id]['additions']]  # noqa:E501
     for addition in additions:
         __salt__['grains.setval']("tiaa_maintsched", addition[2])
         if "app" in addition:
