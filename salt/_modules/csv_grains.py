@@ -53,5 +53,5 @@ def create_grains():
                     'grains.setval']("tiaa_patching", True)
 
     tiaa_maintsched = __salt__['grains.get']("tiaa_maintsched")
-    tiaa_patching_grain = __salt__['grains.get']("tiaa_patching")
-    return tiaa_maintsched, tiaa_patching_grain
+    tiaa_patching = __salt__['grains.get']("tiaa_patching")
+    return {"tiaa_maintsched": tiaa_maintsched}, {"tiaa_patching": tiaa_patching}  # noqa:E501
