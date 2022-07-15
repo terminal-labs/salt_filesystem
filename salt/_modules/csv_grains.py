@@ -35,9 +35,9 @@ def get_diff(
 def delete_grains():
     subtractions = [line.split(',') for line in get_diff()['subtractions']]  # noqa:E501
     for subtraction in subtractions:
-        # if __grains__['id'] == subtraction[0]:
-        __salt__['grains.delkey']("tiaa_maintsched")
-        __salt__['grains.delkey']("tiaa_patching")
+        if __grains__['id'] == subtraction[0]:
+            __salt__['grains.delkey']("tiaa_maintsched")
+            __salt__['grains.delkey']("tiaa_patching")
 
 
 def create_grains():
