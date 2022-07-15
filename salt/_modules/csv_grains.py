@@ -34,17 +34,16 @@ def get_diff(
 
 def delete_grains():
     subtractions = [line.split(',') for line in get_diff()['subtractions']]  # noqa:E501
-    return subtractions
+    for subtraction in subtractions:
+        # if __grains__['id'] == subtraction[0]:
+        __salt__['grains.delkey']("tiaa_maintsched")
+        __salt__['grains.delkey']("tiaa_patching")
 
 
-def create_grains(local_minion_id="local-minion"):
+def create_grains():
     additions = [line.split(',') for line in get_diff()['additions']]  # noqa:E501
     for addition in additions:
-        __salt__['grains.setval']("tiaa_maintsched", addition[2])
-        if "app" in addition:
-            __salt__['grains.setval']("tiaa_patching", True)
-
-    tiaa_maintsched = __salt__['grains.get']("tiaa_maintsched")
-    tiaa_patching_grain = __salt__['grains.get']("tiaa_patching")
-
-    return dict(tiaa_maintsched=tiaa_maintsched, tiaa_patching_grain=tiaa_patching_grain)
+        if __grains__['id'] == addition[0]:
+            __salt__['grains.setval']("tiaa_maintsched", addition[2])
+            if "app" in addition:
+                __salt__['grains.setval']("tiaa_patching", True)
