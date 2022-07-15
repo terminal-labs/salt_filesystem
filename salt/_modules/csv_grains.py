@@ -36,6 +36,6 @@ def delete_grains(
         yesterday_filepath="salt://state/csv_grains_updater/files/yesterday.csv",
         today_filepath="salt://state/csv_grains_updater/files/today.csv"):
 
-    subtractions = [[line.split(',')]
+    subtractions = [line.split(',')
                     for line in get_diff()['subtractions']]
     return subtractions
