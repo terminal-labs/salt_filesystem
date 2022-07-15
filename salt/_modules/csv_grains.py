@@ -39,7 +39,7 @@ def delete_grains():
             tiaa_maintsched_deleted = __salt__[
                 'grains.delkey']("tiaa_maintsched")
             tiaa_patching_deleted = __salt__['grains.delkey']("tiaa_patching")
-    return dict(tiaa_maintsched_deleted, tiaa_patching_deleted)
+    return tiaa_maintsched_deleted, tiaa_patching_deleted
 
 
 def create_grains():
@@ -51,4 +51,4 @@ def create_grains():
             if "app" in addition:
                 tiaa_patching_added = __salt__[
                     'grains.setval']("tiaa_patching", True)
-    return dict(tiaa_maintsched_added, tiaa_patching_added)
+    return tiaa_maintsched_added, tiaa_patching_added
