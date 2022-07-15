@@ -25,7 +25,7 @@ def get_diff(
         today_filepath,
         saltenv=saltenv).split("\n")
 
-    diff = [line for line in diff if line[:2] not in ("--", "++", "@@") and line != ""]  # noqa:E501
+    diff = [line for line in diff if line[:2] not in ("--", "++", "@@") and "," in line]  # noqa:E501
 
     return diff
     subtractions = [line for line in diff if line[0] == '-']
