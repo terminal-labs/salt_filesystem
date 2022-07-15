@@ -51,4 +51,7 @@ def create_grains():
             if "app" in addition:
                 tiaa_patching_added = __salt__[
                     'grains.setval']("tiaa_patching", True)
-    return tiaa_maintsched_added, tiaa_patching_added
+
+    tiaa_patching_grain = __salt__['grains.get']("tiaa_patching")
+    tiaa_patching_grain = __salt__['grains.get']("tiaa_patching")
+    return tiaa_patching_grain, tiaa_patching_grain
