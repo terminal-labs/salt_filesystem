@@ -29,7 +29,7 @@ def get_diff(
 
     subtractions = [line for line in diff if line[0] == '-']
     additions = [line for line in diff if line[0] == '+']
-    return dict(subtractions=subtractions, additions=additions)
+    return additions
 
 
 def delete_grains():
