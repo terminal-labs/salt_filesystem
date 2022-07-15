@@ -29,16 +29,18 @@ def get_diff(
 
     subtractions = [line for line in diff if line[0] == '-']
     additions = [line for line in diff if line[0] == '+']
-    return additions
+    return dict(subtractions=subtractions, additions=additions)
 
 
 def delete_grains():
     subtractions = [line.split(',') for line in get_diff()['subtractions']]  # noqa:E501
     return subtractions
 
+# Must be run with local minion!
+
 
 def create_grains():
-    additions = [line.split(',') for line in get_diff()]  # noqa:E501
+    additions = [line.split(',') for line in get_diff()['additions']]  # noqa:E501
     for addition in additions:
         __salt__['grains.setval']("tiaa_maintsched", addition[2])
         if "app" in addition:
