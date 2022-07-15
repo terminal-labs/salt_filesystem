@@ -52,6 +52,6 @@ def create_grains():
                 tiaa_patching_added = __salt__[
                     'grains.setval']("tiaa_patching", True)
 
+    tiaa_maintsched = __salt__['grains.get']("tiaa_maintsched")
     tiaa_patching_grain = __salt__['grains.get']("tiaa_patching")
-    tiaa_patching_grain = __salt__['grains.get']("tiaa_patching")
-    return tiaa_patching_grain, tiaa_patching_grain
+    return tiaa_maintsched, tiaa_patching_grain
