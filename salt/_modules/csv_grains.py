@@ -15,9 +15,9 @@ def _get_saltenv():
     return __salt__["config.get"]("saltenv")
 
 
-def get_diff(
-        yesterday_filepath="salt://state/csv_grains_updater/files/yesterday.csv",
-        today_filepath="salt://state/csv_grains_updater/files/today.csv"):
+def get_diff(local_minion_id="local-minion",
+             yesterday_filepath="salt://state/csv_grains_updater/files/yesterday.csv",
+             today_filepath="salt://state/csv_grains_updater/files/today.csv"):
 
     saltenv = _get_saltenv()
     diff = __salt__["file.get_diff"](
@@ -29,7 +29,7 @@ def get_diff(
 
     subtractions = [line for line in diff if line[0] == '-']
     additions = [line for line in diff if line[0] == '+']
-    return dict(subtractions=subtractions, additions=additions)
+    return dict(subtractions=subtractions[local_minion_id], additions=additions[local_minion_id])
 
 
 def delete_grains():
