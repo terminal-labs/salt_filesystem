@@ -32,17 +32,11 @@ def get_diff(
     return dict(subtractions=subtractions, additions=additions)
 
 
-def delete_grains(
-        yesterday_filepath="salt://state/csv_grains_updater/files/yesterday.csv",
-        today_filepath="salt://state/csv_grains_updater/files/today.csv"):
-
+def delete_grains(*args):
     subtractions = [line.split(',') for line in get_diff()['subtractions']]  # noqa:E501
     return subtractions
 
 
-def create_grains(
-        yesterday_filepath="salt://state/csv_grains_updater/files/yesterday.csv",
-        today_filepath="salt://state/csv_grains_updater/files/today.csv"):
-
+def create_grains(*args):
     additions = [line.split(',') for line in get_diff()['additions']]  # noqa:E501
     return additions
