@@ -32,11 +32,19 @@ def get_diff(
     return dict(subtractions=subtractions, additions=additions)
 
 
-def delete_grains(*args):
+def delete_grains():
     subtractions = [line.split(',') for line in get_diff()['subtractions']]  # noqa:E501
     return subtractions
 
 
-def create_grains(*args):
+def create_grains():
     additions = [line.split(',') for line in get_diff()['additions']]  # noqa:E501
-    return additions
+    for addition in additions:
+        __salt__['grains.setval']("tiaa_maintsched", addition[2])
+        if "app" in addition:
+            __salt__['grains.setval']("tiaa_patching", True)
+
+    tiaa_maintsched = __salt__['grains.get']("tiaa_maintsched")
+    tiaa_patching_grain = __salt__['grains.get']("tiaa_patching")
+
+    return dict(tiaa_maintsched, tiaa_patching_grain)
