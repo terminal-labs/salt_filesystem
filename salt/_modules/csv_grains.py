@@ -36,14 +36,19 @@ def delete_grains():
     subtractions = [line.split(',') for line in get_diff()['subtractions']]  # noqa:E501
     for subtraction in subtractions:
         if __grains__['id'] == subtraction[0][1:]:
-            __salt__['grains.delkey']("tiaa_maintsched")
-            __salt__['grains.delkey']("tiaa_patching")
+            tiaa_maintsched_deleted = __salt__[
+                'grains.delkey']("tiaa_maintsched")
+            tiaa_patching_deleted = __salt__['grains.delkey']("tiaa_patching")
+    return tiaa_maintsched_deleted, tiaa_patching_deleted
 
 
 def create_grains():
     additions = [line.split(',') for line in get_diff()['additions']]  # noqa:E501
     for addition in additions:
         if __grains__['id'] == addition[0][1:]:
-            __salt__['grains.setval']("tiaa_maintsched", addition[2])
+            tiaa_maintsched_added = __salt__['grains.setval'](
+                "tiaa_maintsched", addition[2])
             if "app" in addition:
-                __salt__['grains.setval']("tiaa_patching", True)
+                tiaa_patching_added = __salt__[
+                    'grains.setval']("tiaa_patching", True)
+    return tiaa_maintsched_added, tiaa_patching_added
