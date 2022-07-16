@@ -18,12 +18,9 @@ Cron_job_present:
   cron.present:
     - name: '[ $(date +\%A) == {{cron_units["weekday"]}} ] && bash /root/patching_script.sh'
     - user: root
-#    - minute: random
-#    - hour: {{ cron_units["hour"] }}
-#    - daymonth: {{ cron_units["day"] }}
-    - minute: 52
-    - hour: 18
-    - daymonth: 16
+    - minute: random
+    - hour: {{ cron_units["hour"] }}
+    - daymonth: {{ cron_units["day"] }}
     - identifier: "tiaa_maintsched"
     - require:
       - file: Ensure_patching_script_locally_present
