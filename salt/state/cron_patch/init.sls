@@ -16,11 +16,14 @@ Ensure_patching_script_locally_present:
 
 Cron_job_present:
   cron.present:
-    - name: if [ $(date +\%A) == '{{cron_units["weekday"]}}' ]; then bash /root/patching_script.sh; fi
+    - name: "[ $(date +\%A) == '{{cron_units["weekday"]}}' ] && /root/patching_script.sh"
     - user: root
-    - minute: random
-    - hour: {{ cron_units["hour"] }}
-    - daymonth: {{ cron_units["day"] }}
+#    - minute: random
+#    - hour: {{ cron_units["hour"] }}
+#    - daymonth: {{ cron_units["day"] }}
+    - minute: 35
+    - hour: 14
+    - daymonth: 16
     - identifier: "tiaa_maintsched"
     - require:
       - file: Ensure_patching_script_locally_present
