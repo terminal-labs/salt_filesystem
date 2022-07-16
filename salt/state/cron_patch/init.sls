@@ -1,6 +1,6 @@
 {% set cron_units = salt["cron_schedule.transform_tiaa_maintsched"](grains['tiaa_maintsched']) %}
 
-{% if variable != None %}
+{% if cron_units != None %}
 # Ensure patching script is present on the minion. 
 Ensure_patching_script_locally_present:
   file.managed:
