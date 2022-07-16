@@ -14,7 +14,7 @@ Ensure_patching_script_locally_present:
 # Ensure cron job is present
 Cron_job_present:
   cron.present:
-    - name: "if [ $(date +\%A) == '{{cron_units["weekday"]}}' ]; then bash /root/patching_script.sh; fi"
+    - name: if [ $(date +\%A) == '{{cron_units["weekday"]}}' ]; then bash /root/patching_script.sh; fi
     - user: root
     - minute: random
     - hour: {{ cron_units["hour"] }}
