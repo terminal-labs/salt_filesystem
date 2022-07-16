@@ -2,13 +2,12 @@
 # flake8: noqa
 # -*- coding: utf-8 -*-
 """
-Cron Schedule  Syntax Conversion
+Cron Schedule Syntax Conversion
 ===============================================
 """
 #!/usr/bin/env python
 
 import re
-from pprint import pprint
 
 # Module name
 __virtualname__ = "cron_schedule"

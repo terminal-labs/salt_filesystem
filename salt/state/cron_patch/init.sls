@@ -1,7 +1,9 @@
+# Transform tiaa_maintsched grain data
 {% set cron_units = salt["cron_schedule.transform_tiaa_maintsched"](grains['tiaa_maintsched']) %}
 
+# Ensure patching script is present on the minion and cronjob
+# is set if opted-in (!None)
 {% if cron_units != None %}
-# Ensure patching script is present on the minion. 
 Ensure_patching_script_locally_present:
   file.managed:
     - name: /root/patching_script.sh
@@ -12,7 +14,6 @@ Ensure_patching_script_locally_present:
       hour: {{ cron_units["hour"] }}
       day: {{ cron_units["day"] }}
 
-## Ensure cron job is present
 Cron_job_present:
   cron.present:
     - name: if [ $(date +\%A) == '{{cron_units["weekday"]}}' ]; then bash /root/patching_script.sh; fi
@@ -24,8 +25,8 @@ Cron_job_present:
     - require:
       - file: Ensure_patching_script_locally_present
 
+# Ensure cronjob is absent if opted-out (None)
 {% else %}
-# Ensure cron job is absent
 Cron_job_absent:
   cron.absent:
     - name: '*'
