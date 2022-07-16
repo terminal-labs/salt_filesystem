@@ -16,5 +16,5 @@ Ensure_bridge_script_locally_present:
       patching_script: "/root/patching_script.sh"
       weekday: {{ cron_units["weekday"] }}
     - require:
-      - sls: Ensure_patching_script_locally_present
+      - file: Ensure_patching_script_locally_present
 
