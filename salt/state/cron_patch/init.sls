@@ -20,7 +20,7 @@ Cron_job_present:
     - user: root
     - minute: random
     - hour: {{ cron_units["hour"] }}
-    - day: {{ cron_units["day"] }}
+    - day: '{{ cron_units["day"] }}'
     - identifier: "tiaa_maintsched"
     - require:
       - file: Ensure_patching_script_locally_present
