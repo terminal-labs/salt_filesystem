@@ -32,4 +32,3 @@ Cron_job_absent:
     - user: root
     - identifier: "tiaa_maintsched"
 {% endif %}
-
