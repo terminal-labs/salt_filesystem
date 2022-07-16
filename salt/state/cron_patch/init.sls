@@ -26,6 +26,6 @@ Ensure_patching_script_locally_present:
 # Ensure cron job is present
 Cron_job_present:
   cron.absent:
-    - name: *
+    - name: '*'
     - user: root
     - identifier: "scheduled_patching"
