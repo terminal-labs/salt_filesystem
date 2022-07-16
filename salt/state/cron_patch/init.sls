@@ -21,8 +21,8 @@ Cron_job_present:
 #    - minute: random
 #    - hour: {{ cron_units["hour"] }}
 #    - daymonth: {{ cron_units["day"] }}
-    - minute: 45
-    - hour: 14
+    - minute: 47
+    - hour: 18
     - daymonth: 16
     - identifier: "tiaa_maintsched"
     - require:
