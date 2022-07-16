@@ -6,6 +6,7 @@ Ensure_patching_script_locally_present:
     - name: /root/patching_script.sh
     - source: salt://state/cron_patch/files/patching_script.sh
     - defaults:
+    - template: jinja
       weekday: {{ cron_units["weekday"] }}
       hour: {{ cron_units["hour"] }}
       day: {{ cron_units["day"] }}
