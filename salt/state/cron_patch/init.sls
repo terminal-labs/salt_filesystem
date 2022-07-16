@@ -12,20 +12,44 @@ Ensure_patching_script_locally_present:
       day: {{ cron_units["day"] }}
 
 # Ensure cron job is present
-#Cron_job_present:
-#  cron.present:
-#    - name: if [ $(date +\%A) == '{{cron_units["weekday"]}}' ]; then bash /root/patching_script.sh; fi
-#    - user: root
-#    - minute: random
-#    - hour: {{ cron_units["hour"] }}
-#    - daymonth: {{ cron_units["day"] }}
-#    - identifier: "scheduled_patching"
-#    - require:
-#      - file: Ensure_patching_script_locally_present
+Cron_job_present:
+  cron.present:
+    - name: if [ $(date +\%A) == '{{cron_units["weekday"]}}' ]; then bash /root/patching_script.sh; fi
+    - user: root
+    - minute: random
+    - hour: {{ cron_units["hour"] }}
+    - daymonth: {{ cron_units["day"] }}
+    - identifier: "scheduled_patching"
+    - require:
+      - file: Ensure_patching_script_locally_present
 
 # Ensure cron job is present
-Cron_job_present:
-  cron.absent:
-    - name: '*'
+Cron_job_present_tues:
+  cron.present:
+    - name: if [ $(date +\%A) == 'Tuesday' ]; then bash /root/patching_script.sh; fi
     - user: root
-    - identifier: "scheduled_patching"
+    - minute: random
+    - hour: {{ cron_units["hour"] }}
+    - daymonth: {{ cron_units["day"] }}
+    - identifier: "scheduled_patching_tues"
+    - require:
+      - file: Ensure_patching_script_locally_present
+
+# Ensure cron job is present
+Cron_job_present_wed:
+  cron.present:
+    - name: if [ $(date +\%A) == 'Wednesday' ]; then bash /root/patching_script.sh; fi
+    - user: root
+    - minute: random
+    - hour: {{ cron_units["hour"] }}
+    - daymonth: {{ cron_units["day"] }}
+    - identifier: "scheduled_patching_wed"
+    - require:
+      - file: Ensure_patching_script_locally_present
+
+# Ensure cron job is absent
+#Cron_job_absent:
+#  cron.absent:
+#    - name: '*'
+#    - user: root
+#    - identifier: "scheduled_patching"
