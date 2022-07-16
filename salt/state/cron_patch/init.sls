@@ -12,7 +12,7 @@ Ensure_patching_script_locally_present:
     - template: jinja
       weekday: {{ cron_units["weekday"] }}
       hour: {{ cron_units["hour"] }}
-      day: {{ cron_units["day"] }}
+      day: '{{ cron_units["day"] }}'
 
 Cron_job_present:
   cron.present:
