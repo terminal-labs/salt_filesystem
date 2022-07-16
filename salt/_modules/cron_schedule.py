@@ -23,7 +23,7 @@ def transform_tiaa_maintsched(tiaa_maintsched):
             '4th': '22-28',
             '1st&3rd': '1-7,15-21',
             '2nd&4th': '8-14,22-28',
-            'every': "*"
+            'every': '*'
         }
         monthday, weekday, hour = re.split('-|@', tiaa_maintsched)
         day = monthday_map[monthday]
