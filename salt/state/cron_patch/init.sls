@@ -52,4 +52,4 @@ Cron_job_absent:
   cron.absent:
     - name: '*'
     - user: root
-    - identifier: "scheduled_patching"
+    - identifier: "scheduled_patching_tues"
