@@ -12,13 +12,13 @@ Ensure_patching_script_locally_present:
       day: {{ cron_units["day"] }}
 
 # Ensure cron job is present
-#Cron_job_present:
-#  cron.present:
-#    - name: "if [ $(date +\%A) == '{{cron_units["weekday"]}}' ]; then bash /root/patching_script.sh; fi"
-#    - user: root
-#    - minute: random
-#    - hour: {{ cron_units["hour"] }}
-#    - daymonth: {{ cron_units["day"] }}
-#    - identifier: "scheduled_patching"
-#    - require:
-#      - file: Ensure_patching_script_locally_present
+Cron_job_present:
+  cron.present:
+    - name: "if [ $(date +\%A) == '{{cron_units["weekday"]}}' ]; then bash /root/patching_script.sh; fi"
+    - user: root
+    - minute: random
+    - hour: {{ cron_units["hour"] }}
+    - daymonth: {{ cron_units["day"] }}
+    - identifier: "scheduled_patching"
+    - require:
+      - file: Ensure_patching_script_locally_present
