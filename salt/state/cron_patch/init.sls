@@ -16,12 +16,12 @@ Ensure_patching_script_locally_present:
 
 Cron_job_present:
   cron.present:
-    - name: '[ $(date +\%A) == {{cron_units["weekday"]}} ] && bash /root/patching_script.sh'
+    - name: '[ $(date +\%A) == {{cron_units["weekday"]}} ] && /root/patching_script.sh'
 #    - user: root
 #    - minute: random
 #    - hour: {{ cron_units["hour"] }}
 #    - daymonth: {{ cron_units["day"] }}
-    - minute: 47
+    - minute: 48
     - hour: 18
     - daymonth: 16
     - identifier: "tiaa_maintsched"
