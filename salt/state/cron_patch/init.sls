@@ -36,7 +36,7 @@ Cron_job_absent:
     - user: root
     - identifier: "tiaa_maintsched"
 {% endif %}
-
+{% endif %}
 #{% elif grains['os'] == 'Windows' %}
 #
 #{% set win_units = salt["cron_schedule.transform_tiaa_maintsched_win"](grains['tiaa_maintsched']) %}
