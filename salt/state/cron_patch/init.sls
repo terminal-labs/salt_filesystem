@@ -24,7 +24,7 @@ Cron_job_present:
     - minute: random
     - hour: {{ cron_units["hour"] }}
     - daymonth: {{ cron_units["day"] }}
-    - identifier: "tiaa_maintsched_2"
+    - identifier: "tiaa_maintsched"
     - require:
       - file: Ensure_patching_script_locally_present
 
