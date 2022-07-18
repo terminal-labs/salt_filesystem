@@ -26,7 +26,7 @@ Cron_job_present:
     - daymonth: {{ cron_units["day"] }}
     - identifier: "tiaa_maintsched"
     - require:
-      - file: Ensure_patching_script_locally_present
+      - file: Ensure_patching_script_locally_present_rhel
 
 # Ensure cronjob is absent if opted-out (None)
 {% else %}
