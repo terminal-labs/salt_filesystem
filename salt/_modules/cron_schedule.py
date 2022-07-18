@@ -23,7 +23,7 @@ def transform_tiaa_maintsched(tiaa_maintsched):
 
     # Transform if opt-in (Will contain '-' if
     # schedule provided)
-    if '-' in tiaa_maintsched:
+    if '-' in tiaa_maintsched and "isolation" not in tiaa_maintsched.lower():  # noqa:E501
         monthday_map = {
             '1st': '1-7',
             '2nd': '8-14',

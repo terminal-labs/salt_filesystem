@@ -21,7 +21,7 @@ Cron_job_present:
   cron.present:
     - name: '[ $(date +\%A) == {{cron_units["weekday"]}} ] && bash /root/patching_script.sh'
     - user: root
-    - minute: random
+    - minute: random #{{ salt["random.seed"](55)}}
     - hour: {{ cron_units["hour"] }}
     - daymonth: {{ cron_units["day"] }}
     - identifier: "tiaa_maintsched"
