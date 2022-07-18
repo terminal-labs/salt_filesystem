@@ -1,3 +1,6 @@
+# Separate workflow for RedHat and Windows
+{% if grains['os'] == 'RedHat'%}
+
 # Transform tiaa_maintsched grain data
 {% set cron_units = salt["cron_schedule.transform_tiaa_maintsched"](grains['tiaa_maintsched']) %}
 
@@ -32,4 +35,7 @@ Cron_job_absent:
     - name: '*'
     - user: root
     - identifier: "tiaa_maintsched"
+{% endif %}
+
+{% elif grains['os'] == 'RedHat' %}
 {% endif %}
