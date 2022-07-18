@@ -24,7 +24,7 @@ Cron_job_present:
     - minute: random
     - hour: {{ cron_units["hour"] }}
     - daymonth: {{ cron_units["day"] }}
-    - identifier: "tiaa_maintsched"
+    - identifier: "tiaa_maintsched_2"
     - require:
       - file: Ensure_patching_script_locally_present
 
@@ -37,5 +37,5 @@ Cron_job_absent:
     - identifier: "tiaa_maintsched"
 {% endif %}
 
-{% elif grains['os'] == 'RedHat' %}
+{% elif grains['os'] == 'Windows' %}
 {% endif %}
