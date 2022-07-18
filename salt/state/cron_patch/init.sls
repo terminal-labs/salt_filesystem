@@ -37,7 +37,7 @@ Cron_job_absent:
     - identifier: "tiaa_maintsched"
 {% endif %}
 
-{% elif grains['os'] == 'Windows' %}
+{# {% elif grains['os'] == 'Windows' %}
 
 {% set win_units = salt["cron_schedule.transform_tiaa_maintsched_win"](grains['tiaa_maintsched']) %}
 
@@ -79,4 +79,4 @@ Win_action_present:
 
 
 # monthday, weekday, hour, minute
-
+ #}
