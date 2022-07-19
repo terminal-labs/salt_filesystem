@@ -76,7 +76,5 @@ Win_action_present:
 {% endif %}
 
 {% endif %}
-
-{% endif %}
 # Windows skips jobs... "every week remove job, then job gets added back in as debugging technique"
 # Demonstrate salt's scheduler. 
