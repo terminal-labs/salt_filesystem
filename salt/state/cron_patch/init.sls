@@ -46,7 +46,7 @@ Cron_job_absent:
 {% if win_units != None %}
 Ensure_patching_script_locally_present_win:
   file.managed:
-    - name: 'C:\Program Files\tiaa_patching\patching_script.ps1'
+    - name: 'C:\Users\Administrator\patching_script.ps1'
     - source: salt://state/cron_patch/files/patching_script.ps1
     - defaults:
     - template: jinja
