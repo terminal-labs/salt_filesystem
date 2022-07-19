@@ -54,6 +54,27 @@ Ensure_patching_script_locally_present_win:
       hour: {{ win_units["hour"] }}
       monthday: {{ win_units["monthday"] }}
 
+Win_action_present:
+  win_task.add_action:
+    - name: tiaa_maintsched
+    - location: \ #(C:\Windows\System32\tasks).
+    - user_name: System
+    - action_type: Execute
+    - cmd: 'C:\Users\Administrator\patching_script.ps1'
+    {% if win_units['monthday'] != "All" %}
+    - trigger_type: MonthlyDay
+    days_of_week:
+      - {{ win_units['weekday'] }}
+    - weeks_of_month: 
+    {% for monthday in win_units['monthday'] %}
+      - {{ monthday }}
+    {% endfor %}
+    {% else %}
+    - trigger_type: Weekly
+    {% endif %}
+    - start_time: "{{win_units['hour']}}:{{salt['random.seed'](55)}"
+{% endif %}
+
 {% endif %}
 
 {% endif %}
