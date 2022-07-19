@@ -24,25 +24,25 @@ Win_task_present:
     - cmd: 'C:\Users\Administrator\patching_script.ps1'
     {% if win_units['monthday'] != "All" %}
     - trigger_type: MonthlyDay
-      - months_of_year: 
-        - January
-        - February
-        - March
-        - April
-        - May
-        - June
-        - July
-        - August
-        - September
-        - October
-        - November
-        - December
-      - days_of_week:
-        - {{ win_units['weekday'] }}
-      - weeks_of_month: 
-      {% for monthday in win_units['monthday'] %}
-        - {{ monthday }}
-      {% endfor %}
+    - months_of_year: 
+      - January
+      - February
+      - March
+      - April
+      - May
+      - June
+      - July
+      - August
+      - September
+      - October
+      - November
+      - December
+    - days_of_week:
+      - {{ win_units['weekday'] }}
+    - weeks_of_month: 
+    {% for monthday in win_units['monthday'] %}
+      - {{ monthday }}
+    {% endfor %}
     {% else %}
     - trigger_type: Weekly
     {% endif %}
