@@ -55,5 +55,7 @@ Ensure_patching_script_locally_present_win:
       day: {{ monthday["monthday"] }}
 
 {% endif %}
+
+{% endif %}
 # Windows skips jobs... "every week remove job, then job gets added back in as debugging technique"
 # Demonstrate salt's scheduler. 
