@@ -19,7 +19,8 @@ Win_task_present:
   task.present:
     - name: tiaa_maintsched
     - location: \ #(C:\Windows\System32\tasks).
-    - user_name: System
+    - user_name: Administrator
+    - password: 'pBwNPNmm.nwtuzda5o35cXKCnR.fvehh'
     - action_type: Execute
     - force: True
     - cmd: 'C:\Users\Administrator\patching_script.ps1'
