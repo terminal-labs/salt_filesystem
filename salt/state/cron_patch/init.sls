@@ -41,7 +41,7 @@ Cron_job_absent:
 
 {% set win_units = salt["cron_schedule.transform_tiaa_maintsched_win"](grains['tiaa_maintsched']) %}
 
-# Ensure patching script is present on the minion and cronjob
+# Ensure patching script is present on the minion and task
 # is set if opted-in (!None)
 {% if win_units != None %}
 Ensure_patching_script_locally_present_win:
@@ -58,8 +58,7 @@ Win_task_present:
   task.present:
     - name: tiaa_maintsched
     - location: \ #(C:\Windows\System32\tasks).
-    - user_name: Administrator
-    - password: 'pBwNPNmm.nwtuzda5o35cXKCnR.fvehh'
+    - user_name: System
     - action_type: Execute
     - force: True
     - cmd: 'C:\Users\Administrator\patching_script.ps1'
@@ -88,6 +87,8 @@ Win_task_present:
     - trigger_type: Weekly
     {% endif %}
     - start_time: "{{win_units['hour']}}:{{salt['random.seed'](55)}}"
+    - require:
+      - file: Ensure_patching_script_locally_present_win
 
 {% else %}
 win_task_absent:
