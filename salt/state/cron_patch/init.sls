@@ -21,7 +21,7 @@ Win_task_present:
     - location: \ #(C:\Windows\System32\tasks).
     - user_name: System
     - action_type: Execute
-    - cmd: 'C:\Users\Administrator\patching_script.ps1'
+      - cmd: 'C:\Users\Administrator\patching_script.ps1'
     {% if win_units['monthday'] != "All" %}
     - trigger_type: MonthlyDay
       - days_of_week:
@@ -33,7 +33,7 @@ Win_task_present:
     {% else %}
     - trigger_type: Weekly
     {% endif %}
-      - start_time: "{{win_units['hour']}}:{{salt['random.seed'](55)}}"
+    - start_time: "{{win_units['hour']}}:{{salt['random.seed'](55)}}"
 {% endif %}
 
 {% endif %}
