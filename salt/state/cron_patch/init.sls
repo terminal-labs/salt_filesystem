@@ -72,7 +72,7 @@ Win_action_present:
     {% else %}
     - trigger_type: Weekly
     {% endif %}
-    - start_time: "{{win_units['hour']}}:{{salt['random.seed'](55)}"
+    - start_time: "{{win_units['hour']}}:{{salt['random.seed'](55)}}"
 {% endif %}
 
 {% endif %}
