@@ -25,10 +25,10 @@ Win_action_present:
     {% if win_units['monthday'] != "All" %}
     - trigger_type: MonthlyDay
     days_of_week:
-      - {{ win_units['weekday'] }}
+    - {{ win_units['weekday'] }}
     - weeks_of_month: 
     {% for monthday in win_units['monthday'] %}
-      - {{ monthday }}
+    - {{ monthday }}
     {% endfor %}
     {% else %}
     - trigger_type: Weekly
