@@ -52,7 +52,7 @@ Ensure_patching_script_locally_present_win:
     - template: jinja
       weekday: {{ win_units["weekday"] }}
       hour: {{ win_units["hour"] }}
-      day: {{ monthday["monthday"] }}
+      monthday: {{ monthday["monthday"] }}
 
 {% endif %}
 
