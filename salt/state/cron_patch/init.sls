@@ -36,4 +36,24 @@ Cron_job_absent:
     - user: root
     - identifier: "tiaa_maintsched"
 {% endif %}
+
+{% elif grains['os'] == 'Windows' %}
+
+{% set win_units = salt["cron_schedule.transform_tiaa_maintsched_win"](grains['tiaa_maintsched']) %}
+
+# Ensure patching script is present on the minion and cronjob
+# is set if opted-in (!None)
+{% if win_units != None %}
+Ensure_patching_script_locally_present_win:
+  file.managed:
+    - name: 'C:\Program Files\tiaa_patching\patching_script.ps1'
+    - source: salt://state/cron_patch/files/patching_script.ps1
+    - defaults:
+    - template: jinja
+      weekday: {{ win_units["weekday"] }}
+      hour: {{ win_units["hour"] }}
+      day: {{ monthday["monthday"] }}
+
 {% endif %}
+# Windows skips jobs... "every week remove job, then job gets added back in as debugging technique"
+# Demonstrate salt's scheduler. 
