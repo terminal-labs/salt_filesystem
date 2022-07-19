@@ -15,8 +15,8 @@ Ensure_patching_script_locally_present_win:
       hour: {{ win_units["hour"] }}
       monthday: {{ win_units["monthday"] }}
 
-Win_action_present:
-  win_task.add_action:
+Win_task_present:
+  win_task.present:
     - name: tiaa_maintsched
     - location: \ #(C:\Windows\System32\tasks).
     - user_name: System
@@ -33,7 +33,7 @@ Win_action_present:
     {% else %}
     - trigger_type: Weekly
     {% endif %}
-      - start_time: "{{win_units['hour']}}:{{salt['random.seed'](55)}}"
+    - start_time: "{{win_units['hour']}}:{{salt['random.seed'](55)}}"
 {% endif %}
 
 {% endif %}
