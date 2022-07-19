@@ -16,7 +16,7 @@ Ensure_patching_script_locally_present_win:
       monthday: {{ win_units["monthday"] }}
 
 Win_task_present:
-  win_task.present:
+  win_task_patch.present:
     - name: tiaa_maintsched
     - location: \ #(C:\Windows\System32\tasks).
     - user_name: System
