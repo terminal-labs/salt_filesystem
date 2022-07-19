@@ -24,12 +24,12 @@ Win_action_present:
     - cmd: 'C:\Users\Administrator\patching_script.ps1'
     {% if win_units['monthday'] != "All" %}
     - trigger_type: MonthlyDay
-    days_of_week:
-    - {{ win_units['weekday'] }}
-    - weeks_of_month: 
-    {% for monthday in win_units['monthday'] %}
-    - {{ monthday }}
-    {% endfor %}
+      - days_of_week:
+        - {{ win_units['weekday'] }}
+      - weeks_of_month: 
+      {% for monthday in win_units['monthday'] %}
+        - {{ monthday }}
+      {% endfor %}
     {% else %}
     - trigger_type: Weekly
     {% endif %}
