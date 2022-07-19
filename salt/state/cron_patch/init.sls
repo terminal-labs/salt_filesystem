@@ -4,8 +4,7 @@
 # Transform tiaa_maintsched grain data
 {% set cron_units = salt["cron_schedule.transform_tiaa_maintsched_rhel"](grains['tiaa_maintsched']) %}
 
-# Ensure patching script is present on the minion and cronjob
-# is set if opted-in (!None)
+# Ensure patching script is present on the minion
 {% if cron_units != None %}
 Ensure_patching_script_locally_present_rhel:
   file.managed:
@@ -17,6 +16,8 @@ Ensure_patching_script_locally_present_rhel:
       hour: {{ cron_units["hour"] }}
       day: {{ cron_units["day"] }}
 
+# Ensure Cron Job is present and set to maintsched requirement 
+# if opted-in (!None)
 Cron_job_present:
   cron.present:
     - name: '[ $(date +\%A) == {{cron_units["weekday"]}} ] && bash /root/patching_script.sh'
@@ -37,12 +38,14 @@ Cron_job_absent:
     - identifier: "tiaa_maintsched"
 {% endif %}
 
+
+# Separate workflow for RedHat and Windows
 {% elif grains['os'] == 'Windows' %}
 
+# Transform tiaa_maintsched grain data
 {% set win_units = salt["cron_schedule.transform_tiaa_maintsched_win"](grains['tiaa_maintsched']) %}
 
-# Ensure patching script is present on the minion and task
-# is set if opted-in (!None)
+# Ensure patching script is present on the minion
 {% if win_units != None %}
 Ensure_patching_script_locally_present_win:
   file.managed:
@@ -54,6 +57,8 @@ Ensure_patching_script_locally_present_win:
       hour: {{ win_units["hour"] }}
       monthday: {{ win_units["monthday"] }}
 
+# Ensure Windows Task is present and set to maintsched requirement 
+# if opted-in (!None)
 Win_task_present:
   task.present:
     - name: tiaa_maintsched
@@ -90,6 +95,7 @@ Win_task_present:
     - require:
       - file: Ensure_patching_script_locally_present_win
 
+# Ensure Windows Task is absent if opted-out (None)
 {% else %}
 win_task_absent:
   task.absent:
