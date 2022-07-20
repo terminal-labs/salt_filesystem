@@ -62,7 +62,7 @@ Ensure_patching_script_locally_present_win:
 Win_task_present:
   task.present:
     - name: tiaa_maintsched
-    - location: \ #(C:\Windows\System32\tasks).
+    - location: \ 
     - user_name: System
     - action_type: Execute
     - force: True
