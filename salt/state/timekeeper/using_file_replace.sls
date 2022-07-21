@@ -7,8 +7,7 @@ Ensure_time_update_is_updated_in_minion_update_file_2:
       - '########################################'
       - '# Last updated  on {{ system_time }} #'
       - '########################################'
-    - replace: 
-      - False
+    - replace: False
 
 #Ensure_time_will_be_updated_every_5_seconds:
 #  schedule.present:
