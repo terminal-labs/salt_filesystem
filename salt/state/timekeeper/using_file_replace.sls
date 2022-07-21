@@ -19,6 +19,7 @@ Ensure_update_time_is_replaced_and_original_time_stays:
 #    - pattern: "[0-9]+*[0-9]+"
     - repl: "# Last update on {{ system_time }} #"
     - count: 1
+    - unless: 'ls /root/update_record_2.txt'
 
 #Ensure_time_will_be_updated_every_5_seconds:
 #  schedule.present:
