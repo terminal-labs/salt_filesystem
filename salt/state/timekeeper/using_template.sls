@@ -16,7 +16,7 @@ Ensure_time_update_is_updated_in_minion_update_file:
 # ----------
 #     The function "state.sls" is running as PID 5418 and was 
 #     started at 2022, Jul 21 20:39:55.457957 with jid 20220721203955457957
-Ensure_time_will_be_updated_every_5_seconds:
+Ensure_time_will_be_updated_every_60_seconds:
   schedule.present:
     - name: update_record_file_every_5sec
     - function: state.sls
