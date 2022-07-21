@@ -106,8 +106,6 @@ Ensure re-reg-satellite6.sh is present on minion:
     - template: jinja
     - defaults:
       register_cmd: "/usr/sbin/subscription-manager register --org=TIAA {{ activation_keys }}"
-    - unless:
-      - 'ls /root/puppet_translation2/v1'
 
 # Ensure sample1.sh is present on mminion with correct activation keys, 
 # sat_server, and random phrase... and exactly matching version saved 
@@ -121,8 +119,6 @@ Ensure sample1.sh is present on minion:
       activation_keys: {{ activation_keys }}
       sat_server: {{ sat_server }}
       random: "Hello TIAA"
-    - unless:
-      - 'ls /root/puppet_translation2/v1'
 
 # Run environment based runscript directly from master, do not store 
 # on minion.

@@ -16,25 +16,25 @@
 {% set activation_keys = salt['tiaa_key.generate_activation_keys']() %}
 
 
-# Create /root/puppet_translation2 directory if not already present.
-Ensure /root/puppet_translation2 directory is present:
+# Create /root/sat_key_gen_1 directory if not already present.
+Ensure /root/sat_key_gen_1 directory is present:
   file.directory:
-    - name: /root/puppet_translation2
+    - name: /root/sat_key_gen_1
     - user: root
     - group: root
     - dir_mode: 755
 
-# Create /root/puppet_translation2/v1 directory if not already present.
-Ensure /root/puppet_translation2/v1 directory is present:
+# Create /root/sat_key_gen_1/v1 directory if not already present.
+Ensure /root/sat_key_gen_1/v1 directory is present:
   file.directory:
-    - name: /root/puppet_translation2/v1
+    - name: /root/sat_key_gen_1/v1
 
 # Ensure re-reg-satellite6.sh is present on minion with correct register 
 # command and exactly matching version saved on master.
 Ensure re-reg-satellite6.sh is present on minion:
   file.managed:
-    - name: /root/puppet_translation2/v1/re-reg-satellite6.sh
-    - source: salt://state/puppet_translation2/files/re-reg-satellite6.sh
+    - name: /root/sat_key_gen_1/v1/re-reg-satellite6.sh
+    - source: salt://state/sat_key_gen_1/files/re-reg-satellite6.sh
     - template: jinja
     - defaults:
       register_cmd: "/usr/sbin/subscription-manager register --org=TIAA {{ activation_keys }}"
@@ -44,8 +44,8 @@ Ensure re-reg-satellite6.sh is present on minion:
 # on master.
 Ensure sample1.sh is present on minion:
   file.managed:
-    - name: /root/puppet_translation2/v1/sample1.sh
-    - source: salt://state/puppet_translation2/files/sample1.sh
+    - name: /root/sat_key_gen_1/v1/sample1.sh
+    - source: salt://state/sat_key_gen_1/files/sample1.sh
     - template: jinja
     - defaults:
       activation_keys: {{ activation_keys }}
@@ -56,4 +56,4 @@ Ensure sample1.sh is present on minion:
 # on minion.
 Run environment based runscript directly from master:
   cmd.script:
-    - source: salt://state/puppet_translation2/files/{{run_script}}
+    - source: salt://state/sat_key_gen_1/files/{{run_script}}
