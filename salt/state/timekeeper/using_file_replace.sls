@@ -4,10 +4,15 @@ Ensure_time_update_is_updated_in_minion_update_file_2:
   file.managed:
     - name: /root/update_record_2.txt
     - contents:
-      - '########################################'
-      - '# Last updated  on {{ system_time }} #'
-      - '########################################'
-    - replace: False
+      - '######################################'
+      - '# Last update on {{ system_time }} #'
+      - '######################################'
+      - '##########################################'
+      - '# Original update on {{ system_time }} #'
+      - '##########################################'
+    - replace: True
+
+
 
 #Ensure_time_will_be_updated_every_5_seconds:
 #  schedule.present:
