@@ -5,10 +5,10 @@ Ensure_update_file_is_present_with_original_time:
     - name: /root/update_record_2.txt
     - contents:
       - '######################################'
-      - '# Last update on {{ system_time }}. #'
+      - '# Last update on {{ system_time }} #'
       - '######################################'
       - '##########################################'
-      - '# Original update on {{ system_time }}. #'
+      - '# Original update on {{ system_time }} #'
       - '##########################################'
     - replace: False
 
