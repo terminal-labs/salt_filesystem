@@ -1,6 +1,6 @@
 {% set system_time = salt['system.get_system_date_time']() %}
 
-Ensure_time_update_is_updated_in_minion_update_file_2:
+Ensure_update_file_is_present_with_original_time:
   file.managed:
     - name: /root/update_record_2.txt
     - contents:
@@ -12,7 +12,12 @@ Ensure_time_update_is_updated_in_minion_update_file_2:
       - '##########################################'
     - replace: True
 
-
+Ensure_original_time_is_replaced_and_original_time_stays:
+  file.managed:
+    - name: /root/update_record_2.txt
+    - pattern: '# * #'
+    - repl: '# Last update on {{ system_time }} #'
+    - count: 1
 
 #Ensure_time_will_be_updated_every_5_seconds:
 #  schedule.present:
