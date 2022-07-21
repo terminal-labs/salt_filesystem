@@ -2,14 +2,14 @@
 {% if grains['os'] == 'RedHat'%}
 
 # Transform tiaa_maintsched grain data
-{% set cron_units = salt["cron_schedule.transform_tiaa_maintsched_rhel"](grains['tiaa_maintsched']) %}
+{% set cron_units = salt["maintsched.transform_tiaa_maintsched_rhel"](grains['tiaa_maintsched']) %}
 
 # Ensure patching script is present on the minion
 {% if cron_units != None %}
 Ensure_patching_script_locally_present_rhel:
   file.managed:
     - name: /root/patching_script.sh
-    - source: salt://state/cron_patch/files/patching_script.sh
+    - source: salt://state/maintsched/files/patching_script.sh
     - defaults:
     - template: jinja
       weekday: {{ cron_units["weekday"] }}
@@ -56,20 +56,20 @@ Weekly_windows_tiaa_maintsched_task_purge:
     - name: delete_windows_tiaa_maintsched_task_weekly
     - function: state.sls
     - job_args:
-      - state.cron_patch.clear_win_tasks
+      - state.maintsched.clear_win_tasks
     - when:
         - Sunday 11:30pm
 
 
 # Transform tiaa_maintsched grain data
-{% set win_units = salt["cron_schedule.transform_tiaa_maintsched_win"](grains['tiaa_maintsched']) %}
+{% set win_units = salt["maintsched.transform_tiaa_maintsched_win"](grains['tiaa_maintsched']) %}
 
 # Ensure patching script is present on the minion
 {% if win_units != None %}
 Ensure_patching_script_locally_present_win:
   file.managed:
     - name: 'C:\Users\Administrator\patching_script.ps1'
-    - source: salt://state/cron_patch/files/patching_script.ps1
+    - source: salt://state/maintsched/files/patching_script.ps1
     - defaults:
     - template: jinja
       weekday: {{ win_units["weekday"] }}
