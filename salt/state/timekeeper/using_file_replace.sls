@@ -10,7 +10,7 @@ Ensure_update_file_is_present_with_original_time:
       - '##########################################'
       - '# Original update on {{ system_time }} #'
       - '##########################################'
-    - replace: True
+    - replace: False
 
 Ensure_original_time_is_replaced_and_original_time_stays:
   file.replace:
