@@ -15,4 +15,3 @@ Ensure_time_will_be_updated_every_5_seconds:
     - job_args:
       - state.timekeeper.using_template
     - seconds: 5
-

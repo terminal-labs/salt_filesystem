@@ -42,6 +42,25 @@ Cron_job_absent:
 # Separate workflow for RedHat and Windows
 {% elif grains['os'] == 'Windows' %}
 
+# python-dateutil must be available for 
+# "Sunday 11:30pm" format
+Ensure_python-dateutil_pkg_available:
+  pkg.installed:
+    - pkgs:
+      - python-dateutil
+
+# Purge tiaa_maintsched task from windows scheduler weekly 
+# on Sunday 11:30pm
+Weekly_windows_tiaa_maintsched_task_purge:
+  schedule.present:
+    - name: delete_windows_tiaa_maintsched_task_weekly
+    - function: state.sls
+    - job_args:
+      - state.cron_patch.clear_win_tasks
+    - when:
+        - Sunday 11:30pm
+
+
 # Transform tiaa_maintsched grain data
 {% set win_units = salt["cron_schedule.transform_tiaa_maintsched_win"](grains['tiaa_maintsched']) %}
 
