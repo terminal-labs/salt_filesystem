@@ -10,5 +10,6 @@ Ensure_time_update_is_updated_in_minion_update_file:
 
 Ensure_time_will_be_updated_every_5_seconds:
   schedule.present:
-    - function: 'state/timekeeper/using_template.sls'
+    - function: 'state.apply state.timekeeper.using_template'
     - seconds: 5
+
