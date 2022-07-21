@@ -19,8 +19,8 @@ Ensure_update_time_is_replaced_and_original_time_stays:
     - repl: "# Last update on {{ system_time }} #"
     - count: 1
     - backup: False
-    - onlyif: 
-      - 'ls /root/update_record_2.txt'
+#    - onlyif: 
+#      - 'ls /root/update_record_2.txt'
 
 Ensure_time_will_be_updated_every_60_seconds:
   schedule.present:
