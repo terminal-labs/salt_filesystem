@@ -16,6 +16,7 @@ Ensure_original_time_is_replaced_and_original_time_stays:
   file.replace:
     - name: /root/update_record_2.txt
     - pattern: '# * #'
+    - pattern: 'Last'
     - repl: '# Last update on {{ system_time }} #'
     - count: 1
 
