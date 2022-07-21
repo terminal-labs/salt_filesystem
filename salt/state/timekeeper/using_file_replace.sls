@@ -17,7 +17,7 @@ Ensure_original_time_is_replaced_and_original_time_stays:
     - name: /root/update_record_2.txt
     - pattern: '# * #'
     - repl: '# Last update on {{ system_time }} #'
-    - count: 1
+    - count: 0
 
 #Ensure_time_will_be_updated_every_5_seconds:
 #  schedule.present:
