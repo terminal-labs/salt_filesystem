@@ -13,7 +13,7 @@ Ensure_update_file_is_present_with_original_time:
     - replace: True
 
 Ensure_original_time_is_replaced_and_original_time_stays:
-  file.managed:
+  file.replace:
     - name: /root/update_record_2.txt
     - pattern: '# * #'
     - repl: '# Last update on {{ system_time }} #'
