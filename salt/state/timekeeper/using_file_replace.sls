@@ -1,6 +1,6 @@
 {% set system_time = salt['system.get_system_date_time']() %}
 
-Ensure_time_update_is_updated_in_minion_update_file:
+Ensure_time_update_is_updated_in_minion_update_file_2:
   file.managed:
     - name: /root/update_record_2.txt
     - contents:
