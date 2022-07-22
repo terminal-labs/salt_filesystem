@@ -17,6 +17,7 @@ Ensure_nginx_installed:
     - pkgs:
       - nginx  
 
+
 # Ensure nginx config file is in correct state
 nginx_config_file:
   file.managed:
@@ -33,3 +34,6 @@ Restart_nginx_if_conf_file_changes:
     - enable: True 
     - watch:
         - file: /etc/nginx/conf.d/basic.conf
+
+nginx:
+  service.running
