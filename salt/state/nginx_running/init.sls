@@ -13,6 +13,7 @@ Ensure_update_file_is_present_with_original_time:
 # if new packages available
 Ensure_nginx_installed:
   pkg.installed:
+#  pkg.latest:
     - pkgs:
       - nginx  
 
@@ -32,4 +33,3 @@ Restart_nginx_if_conf_file_changes:
     - enable: True 
     - watch:
         - file: /etc/nginx/conf.d/basic.conf
-
