@@ -25,5 +25,4 @@ Restart_nginx_if_conf_file_changes:
 #    - reload: True
     - enable: True 
     - watch:
-        - file: /etc/nginx/nginx.conf 
-
+        - file: /etc/nginx/conf.d/*
