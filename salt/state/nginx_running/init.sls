@@ -16,6 +16,12 @@ Ensure_nginx_installed:
     - pkgs:
       - nginx  
 
+# Ensure nginx config file is in correct state
+nginx_config_file:
+  file.managed:
+    - name: /etc/nginx/conf.d/basic.conf
+    - source: salt://state/nginx_running/files/basic.conf
+
 # nginx.service has reload feature so 
 # reload: True can be used to reload after 
 # config file changes versus restarting.
@@ -25,4 +31,5 @@ Restart_nginx_if_conf_file_changes:
 #    - reload: True
     - enable: True 
     - watch:
-        - file: /etc/nginx/conf.d/default.conf
+        - file: /etc/nginx/conf.d/basic.conf
+        
