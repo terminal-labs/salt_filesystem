@@ -28,8 +28,8 @@ nginx_config_file:
 Restart_nginx_if_conf_file_changes:
   service.running:
     - name: nginx
-#    - reload: True
+    - reload: True
     - enable: True 
     - watch:
         - file: /etc/nginx/conf.d/basic.conf
-        
+
