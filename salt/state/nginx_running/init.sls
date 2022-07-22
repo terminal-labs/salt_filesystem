@@ -1,3 +1,14 @@
+# Make nginx repo provision to allow install
+Ensure_update_file_is_present_with_original_time:
+  file.managed:
+    - name: /etc/yum.repos.d/nginx.repo
+    - contents:
+      - '[nginx]'
+      - 'name=nginx repo'
+      - 'baseurl=http://nginx.org/packages/mainline/rhel/7/$basearch/'
+      - 'gpgcheck=0'
+      - 'enabled=1'
+
 # Ensure nginx is installed. Update 
 # if new packages available
 Ensure_nginx_installed:
