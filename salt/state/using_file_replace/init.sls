@@ -19,5 +19,5 @@ Ensure_update_time_is_replaced_and_original_time_stays:
     - repl: "# Last update on {{ system_time }} #"
     - count: 1
     - backup: False
-    - unless: 
+    - onlyif: 
       - 'ls /root/update_record_2.txt'
