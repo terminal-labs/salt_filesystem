@@ -2,7 +2,7 @@ dev1:
 #    '*':
 #        - state.nginx_running
 #        - state.timekeeper.using_template
-    'role_1':
+    'roles:role_1':
         - state.nginx_running
         - state.timekeeper.using_template
 
