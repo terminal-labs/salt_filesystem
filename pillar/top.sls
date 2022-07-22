@@ -1,4 +1,4 @@
-base:
+dev1:
   'rhel1*':
     - foo12
   'rhel2*':
