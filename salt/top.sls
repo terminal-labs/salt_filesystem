@@ -3,6 +3,7 @@ dev1:
 #        - state.nginx_running
 #        - state.timekeeper.using_template
     'roles:role_1':
+        - match: grain
         - state.nginx_running
         - state.timekeeper.using_template
 
