@@ -5,6 +5,16 @@ All custom modules and salt state files have been annotated with explainations a
 ### The following master configurations were applied in `/etc/salt/master.d/fileserver.conf`  and `/etc/salt/master.d/remote_pillar.conf` for GitFS fileserver and remote pillar deployment.
 
 `/etc/salt/master.d/fileserver.conf`:
+Note: Salt automatically maps git branches/tags to saltenvs of the same name. If saltenv differs from branch/tag name, the mapping can be explicitly stated like in the following simplified example:
+```
+gitfs_remotes:
+  - https://github.com/terminal-labs/salt_filesystem.git:
+    - saltenv:
+      - dev1:
+        - ref: branch1
+      - dev2:
+        - ref: branch2
+```
 ```
 #File: /etc/salt/master.d/fileserver.conf
 
@@ -50,7 +60,7 @@ ext_pillar:
 #      - privkey: rsa.pem
 ```
 
-### The following minion configurations were applied in `/etc/salt/minion.d/fileserver.conf` to link each minion to active-active master pairs, specified locked salt environments and customs roles based grains.
+### The following minion configurations were applied in `/etc/salt/minion.d/fileserver.conf` to link each minion to active-active master pairs, specified locked salt environments and custom roles based grains.
 `/etc/salt/minion.d/fileserver.conf`:
 ```
 #File: /etc/salt/minion.d/fileserver.conf
