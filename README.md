@@ -1,7 +1,9 @@
-# salt_filesystem
+# Sample Salt filesystem architecture with custom states and modules. 
 Simple Salt Filesytem with GitFS
 
-## Master Config
+## Master Config Settings
+### The following master configurations were applied in `/etc/salt/master.d/fileserver.conf`  and `/etc/salt/master.d/remote_pillar.conf` for GitFS fileserver and remote pillar deployment.
+
 `/etc/salt/master.d/fileserver.conf`:
 ```
 #File: /etc/salt/master.d/fileserver.conf
@@ -33,6 +35,7 @@ gitfs_remotes:
     ##############################################################
 #    - all_saltenvs: master
 ```
+`/etc/salt/master.d/remote_pillar.conf`:
 ```
 #File: /etc/salt/master.d/remote_pillar.conf
 
@@ -47,7 +50,7 @@ ext_pillar:
 #      - privkey: rsa.pem
 ```
 
-## Minion Config
+### The following minion configurations were applied in `/etc/salt/minion.d/fileserver.conf` to link each minion to active-active master pairs, specified locked salt environments and customs roles based grains.
 `/etc/salt/minion.d/fileserver.conf`:
 ```
 #File: /etc/salt/minion.d/fileserver.conf
@@ -65,7 +68,3 @@ grains:
     - role_1
     - role_a
 ```
-
-
-TOP FILE 
-GRAINS.GET
