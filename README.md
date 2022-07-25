@@ -1,5 +1,5 @@
 # Sample Salt filesystem architecture with custom states and modules. 
-Simple Salt Filesytem with GitFS
+All custom modules and salt state files have been annotated with explainations and insights. `state/sat_key_gen_1/` and `state/sat_key_gen_2/` modules do the same exact thing. `state/sat_key_gen_2/` is the preferred route because overly cumbersome jinja logic is outsourced to custom module `_modules/tiaa_key.py` using pythin instead.
 
 ## Master Config Settings
 ### The following master configurations were applied in `/etc/salt/master.d/fileserver.conf`  and `/etc/salt/master.d/remote_pillar.conf` for GitFS fileserver and remote pillar deployment.
