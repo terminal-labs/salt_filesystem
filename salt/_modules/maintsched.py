@@ -15,7 +15,7 @@ __virtualname__ = "cron_schedule"
 
 def transform_tiaa_maintsched_rhel(tiaa_maintsched):
     """
-    Transform schedule input into cron usable form.
+    Transform tiaa_maintsched grain into cron usable form.
     """
 
     # Default if no tiaa_maintschedule is opted-out.
@@ -49,7 +49,7 @@ def transform_tiaa_maintsched_rhel(tiaa_maintsched):
 
 def transform_tiaa_maintsched_win(tiaa_maintsched):
     """
-    Transform schedule input into win_task usable form.
+    Transform tiaa_maintsched grain into win_task usable form.
     """
 
     # Default if no tiaa_maintschedule is opted-out.

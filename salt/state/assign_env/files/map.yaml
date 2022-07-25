@@ -1,1 +1,3 @@
+# Variables can be mapped in map files
+# in addition to pillar and grains
 saltenv: main

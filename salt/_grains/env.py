@@ -5,6 +5,9 @@
 
 import socket
 
+# One possible way creating a custom grain
+# based on minion's fqdn
+
 
 def env_grains():
     # initialize a grains dictionary

@@ -59,6 +59,11 @@ master:
 saltenv: dev1
 #pillarenv: main
 lock_saltenv: True
+
+grains:
+  roles:
+    - role_1
+    - role_a
 ```
 
 
