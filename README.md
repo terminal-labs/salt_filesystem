@@ -1,5 +1,5 @@
 # Sample Salt filesystem architecture with custom states and modules. 
-All custom modules and salt state files have been annotated with explainations and insights. `state/sat_key_gen_1/` and `state/sat_key_gen_2/` modules do the same exact thing. `state/sat_key_gen_2/` is the preferred route because overly cumbersome jinja logic is outsourced to custom module `_modules/tiaa_key.py` using pythin instead.
+All custom modules and salt state files have been annotated with explanations and insights. `state/sat_key_gen_1/` and `state/sat_key_gen_2/` modules do the exact same thing. `state/sat_key_gen_2/` is the preferred route because overly cumbersome jinja logic is outsourced to custom module `_modules/tiaa_key.py` which exclusively uses python instead.
 
 ## Master Config Settings
 ### The following master configurations were applied in `/etc/salt/master.d/fileserver.conf`  and `/etc/salt/master.d/remote_pillar.conf` for GitFS fileserver and remote pillar deployment.
@@ -60,7 +60,7 @@ ext_pillar:
 #      - privkey: rsa.pem
 ```
 
-### The following minion configurations were applied in `/etc/salt/minion.d/fileserver.conf` to link each minion to active-active master pairs, specified locked salt environments and custom roles based grains.
+### The following minion configurations were applied in `/etc/salt/minion.d/fileserver.conf` to connect each minion to active-active master pairs with specified locked salt environments and custom roles based grains.
 `/etc/salt/minion.d/fileserver.conf`:
 ```
 #File: /etc/salt/minion.d/fileserver.conf
